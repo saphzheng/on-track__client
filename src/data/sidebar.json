@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Explore Exercises",
+        "icon": "bi-search",
+        "children": [
+            {
+                "title": "By Body Part"
+            },
+            {
+                "title": "List"
+            }
+        ]
+    },
+    {
+        "title": "My Workouts",
+        "icon": "bi-person",
+        "children": [
+            {
+                "title": "By Month"
+            },
+            {
+                "title": "By Day"
+            }
+        ]
+    },
+    {
+        "title": "My Progress",
+        "icon": "bi-bar-chart-steps"
+    }
+]
