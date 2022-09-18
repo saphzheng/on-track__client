@@ -9,7 +9,7 @@ const Header = () => {
         <header className="header">
             <img className="header__logo" src={logo} alt="onTrack"></img>
             <div className="header__user">
-                {loggedIn ? <button>Log In</button> : <h1 className="header__title">Welcome, User</h1>}
+                {loggedIn ? <button>Log In</button> : <span className="header__title">Welcome, User</span>}
                 <i className="bi-person-circle header__profile"></i>
             </div>
         </header>

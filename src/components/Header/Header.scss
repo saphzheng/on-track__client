@@ -1,7 +1,9 @@
+@use '../../styles/colors' as *;
+
 .header {
     display: flex;
     align-items: center;
-    background-color: rgb(255, 204, 0);
+    background-color: $primary-brand-color;
     
     &__logo {
         width: 5rem;

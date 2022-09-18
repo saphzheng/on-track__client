@@ -1,0 +1,12 @@
+@use '../../styles/colors' as *;
+
+.landing {
+    width: 100%;
+    background-image: url('../../assets/images/landing-bg.jpg');
+    background-position: center;
+    background-size: cover;
+
+    &__title {
+        color: $primary-brand-color;
+    }
+}
