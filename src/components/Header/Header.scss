@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 204, 0);
+    
+    &__logo {
+        width: 5rem;
+    }
+
+    &__title {
+        margin: 0;
+        margin-right: 1rem;
+        font-size: 1.5rem;
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    &__profile {
+        margin-right: 1rem;
+    }
+}
