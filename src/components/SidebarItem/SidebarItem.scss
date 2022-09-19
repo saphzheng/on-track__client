@@ -1,6 +1,8 @@
+@use '../../styles/colors.scss' as *;
+
 .sidebar-item {
     width: 100%;
-    color: white;
+    color: $primary-text-color;
     cursor: default;
 
     &--clickable {
