@@ -1,23 +1,42 @@
 import './SidebarItem.scss';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-const SidebarItem = ({ item, child }) => {
+const SidebarItem = ({ item }) => {
     const [ open, setOpen ] = useState(false);
 
-    return (
-        <div className={`sidebar-item ${open ? "sidebar-item--open" : ""} ${child ? "sidebar-item__child" : ""}`}>
-            <div className={`sidebar-item__title ${!item.children ? "sidebar-item--clickable" : ""}`}>
-                {item.icon && <i className={`sidebar-item__icon ${item.icon}`}></i>}
-                <span>{item.title}</span>
-                {item.children ? <i className={`bi-chevron-down sidebar-item__expand ${open ? "sidebar-item__expand--open" : ""}`}
-                    onClick={() => setOpen(!open)}></i> : null}
+    if (item.children) {
+        return (
+            <div className={`sidebar-item ${open ? "sidebar-item--open" : ""}`}>
+                <div className="sidebar-item__title">
+                    {item.icon && <i className={`sidebar-item__icon ${item.icon}`}></i>}
+                    <span>{item.title}</span>
+                    <i className={`bi-chevron-down sidebar-item__expand ${open ? "sidebar-item__expand--open" : ""}`}
+                        onClick={() => setOpen(!open)}></i>
+                </div>
+                <div className={`sidebar-item__children ${open ? "sidebar-item__children--open" : ""}`}>
+                    {item.children.map(child => {
+                        return (
+                            <NavLink key={uuid()} className={`sidebar-item__title sidebar-item__child ${({ isActive }) => isActive ? "active" : ""}`} to={child.path}>
+                                <span>{child.title}</span>
+                            </NavLink>
+                        );
+                    })}
+                </div>
             </div>
-            {item.children ? <div className={`sidebar-item__children ${open ? "sidebar-item__children--open" : ""}`}>
-                {item.children.map(child => <SidebarItem key={uuid()} item={child} child={true}/>)}
-            </div> : null}
-        </div>
-    );
+        );
+    } else {
+        return (
+            <div className="sidebar-item">
+                <NavLink className={`sidebar-item__title sidebar-item--single ${({ isActive }) => isActive ? "active" : ""}`} end to={item.path}>
+                    {item.icon && <i className={`sidebar-item__icon ${item.icon}`}></i>}
+                    <span>{item.title}</span>
+                </NavLink>
+            </div>
+        )
+    }
+    
 }
 
 export default SidebarItem;

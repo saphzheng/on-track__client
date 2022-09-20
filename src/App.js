@@ -34,19 +34,17 @@ function App() {
   }, []);
 
   return (
-    <>
-    <Header />
-    <main className="main">
-      { isAuthenticated ? <Sidebar /> : null }
-      <BrowserRouter>
+    <BrowserRouter>
+      <Header isAuthenticated={isAuthenticated} logout={logout} />
+      <main className="main">
+        {isAuthenticated ? <Sidebar /> : null}
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
           <Route path="/explore" element={<ExploreByBodyPart />} />
           <Route path="/exercise/:bodyPart" element={<BodyPartDetails />} />
         </Routes>
-      </BrowserRouter>
-    </main>
-    </>
+      </main>
+    </BrowserRouter>
   );
 }
 
