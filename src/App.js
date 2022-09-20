@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import LandingPage from './pages/LandingPage/LandingPage';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
@@ -18,7 +19,7 @@ function App() {
       { isAuthenticated ? <Sidebar /> : null }
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LandingPage loginWithRedirect={loginWithRedirect} />} />
+          <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
         </Routes>
       </BrowserRouter>
     </main>
