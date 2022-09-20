@@ -5,7 +5,13 @@
     color: $primary-text-color;
     cursor: default;
 
-    &--clickable {
+    // &--open {
+    //     background-color: rgb(67, 67, 67);
+    // }
+
+    &--single {
+        text-decoration: none;
+        color: $primary-text-color;
         cursor: pointer;
     }
 
@@ -50,6 +56,13 @@
     &__child {
         padding-left: 2rem;
         background-color: rgb(33, 33, 33);
-        border-bottom: 1px solid rgb(58, 58, 58)
+        color: $primary-text-color;
+        border-bottom: 1px solid rgb(58, 58, 58);
+        text-decoration: none;
     }
+}
+
+.active {
+    background-color: rgba(255, 192, 82, 0.804) !important;
+    color: $secondary-text-color;
 }

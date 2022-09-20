@@ -13,17 +13,15 @@ function App() {
   
 
   return (
-    <>
-    <Header isAuthenticated={isAuthenticated} logout={logout} />
-    <main className="main">
-      { isAuthenticated ? <Sidebar /> : null }
-      <BrowserRouter>
+    <BrowserRouter>
+      <Header isAuthenticated={isAuthenticated} logout={logout} />
+      <main className="main">
+        {isAuthenticated ? <Sidebar /> : null}
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
         </Routes>
-      </BrowserRouter>
-    </main>
-    </>
+      </main>
+    </BrowserRouter>
   );
 }
 
