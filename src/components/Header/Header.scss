@@ -1,9 +1,12 @@
 @use '../../styles/colors' as *;
 
 .header {
-    display: flex;
-    align-items: center;
     background-color: $primary-brand-color;
+
+    &__content {
+        display: flex;
+        align-items: center;
+    }
     
     &__logo {
         width: 5rem;
@@ -21,7 +24,36 @@
         margin-left: auto;
     }
 
-    &__profile {
+    &__avatar {
         margin-right: 1rem;
+        border-radius: 50%;
+        width: 2.5rem;
+    }
+
+    &__expand {
+        cursor: pointer;
+        margin-left: auto;
+        transform: rotate(0);
+        transition: transform 0.3s;
+
+        &--open {
+            transform: rotate(180deg);
+            transition: transform 0.3s;
+        }
+    }
+
+    &__logout {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        position: absolute;
+        right: 1rem;
+        padding: 0;
+        border: none;
+
+        &--open {
+            max-height: 5rem;
+            transition: max-height 0.3s ease-in;
+        }
     }
 }
