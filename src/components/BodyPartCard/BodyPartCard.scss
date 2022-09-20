@@ -1,0 +1,31 @@
+@use '../../styles/colors' as *;
+
+.bodypart-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 20%;
+    background-color: $primary-brand-color;
+    border: 1px solid $secondary-text-color;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: $secondary-text-color;
+
+    &:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s;
+    }
+
+    &__image {
+        margin: 0.5rem;
+    }
+
+    &__name {
+        margin: 0.5rem;
+        font-weight: 700;
+
+    }
+}

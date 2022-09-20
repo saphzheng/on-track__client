@@ -1,8 +1,10 @@
 import './Header.scss';
 import logo from "../../assets/images/ontrack-logo.jpg";
 import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
-const Header = ({ isAuthenticated, logout, user }) => {
+const Header = () => {
+    const { logout, user, isAuthenticated } = useAuth0();
     const [ open, setOpen ] = useState(false);
 
     return (
