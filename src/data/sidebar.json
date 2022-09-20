@@ -1,15 +1,7 @@
 [
     {
-        "title": "Explore Exercises",
-        "icon": "bi-search",
-        "children": [
-            {
-                "title": "By Body Part"
-            },
-            {
-                "title": "List"
-            }
-        ]
+        "title": "My Progress",
+        "icon": "bi-bar-chart-steps"
     },
     {
         "title": "My Workouts",
@@ -24,7 +16,15 @@
         ]
     },
     {
-        "title": "My Progress",
-        "icon": "bi-bar-chart-steps"
+        "title": "Explore Exercises",
+        "icon": "bi-search",
+        "children": [
+            {
+                "title": "By Body Part"
+            },
+            {
+                "title": "List"
+            }
+        ]
     }
 ]
