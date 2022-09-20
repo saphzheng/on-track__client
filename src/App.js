@@ -1,21 +1,24 @@
 import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import Landing from './pages/Landing/Landing';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
-  const [ loggedIn, setLoggedIn ] = useState(false);
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
+  
 
   return (
     <>
-    <Header loggedIn={loggedIn}/>
+    <Header isAuthenticated={isAuthenticated} logout={logout} />
     <main className="main">
-      { loggedIn ? <Sidebar /> : null }
+      { isAuthenticated ? <Sidebar /> : null }
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<LandingPage loginWithRedirect={loginWithRedirect} />} />
         </Routes>
       </BrowserRouter>
     </main>
