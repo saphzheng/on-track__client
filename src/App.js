@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import LandingPage from './pages/LandingPage/LandingPage';
 import HomePage from './pages/HomePage/HomePage';
 import ExploreByBodyPart from './pages/ExploreByBodyPart/ExploreByBodyPart';
+import BodyPartDetails from './pages/BodyPartDetails/BodyPartDetails';
 
 function App() {
   const { loginWithRedirect, user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
           <Route path="/explore" element={<ExploreByBodyPart />} />
+          <Route path="/exercise/:bodyPart" element={<BodyPartDetails />} />
         </Routes>
       </BrowserRouter>
     </main>
