@@ -1,6 +1,7 @@
 .sidebar {
     background-color: rgba(22, 22, 22, 1);
     width: 14rem;
+    min-height: calc(100vh - 80px);
     align-self: stretch;
     flex-shrink: 0;
 }

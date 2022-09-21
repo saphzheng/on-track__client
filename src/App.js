@@ -35,12 +35,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header isAuthenticated={isAuthenticated} logout={logout} />
+      <Header />
       <main className="main">
         {isAuthenticated ? <Sidebar /> : null}
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
-          <Route path="/explore" element={<ExploreByBodyPart />} />
+          <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
           <Route path="/exercise/:bodyPart" element={<BodyPartDetails />} />
         </Routes>
       </main>

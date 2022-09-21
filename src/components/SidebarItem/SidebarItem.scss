@@ -5,10 +5,6 @@
     color: $primary-text-color;
     cursor: default;
 
-    // &--open {
-    //     background-color: rgb(67, 67, 67);
-    // }
-
     &--single {
         text-decoration: none;
         color: $primary-text-color;
@@ -65,4 +61,20 @@
 .active {
     background-color: rgba(255, 192, 82, 0.804) !important;
     color: $secondary-text-color;
+}
+
+.sidebar-item:has(.active) {
+    cursor: default;
+
+    & > div {
+        @extend .sidebar-item__children--open;
+    }
+
+    & > div > i:last-child {
+        pointer-events: none;       
+    }
+
+    & > .sidebar-item__title:hover {
+        background-color: rgba(22, 22, 22, 1);
+    }
 }
