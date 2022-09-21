@@ -41,7 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
           <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
-          <Route path="/exercise/:bodyPart" element={<BodyPartDetails />} />
+          <Route path="/explore/byBodyPart/:bodyPart" element={<BodyPartDetails />} />
         </Routes>
       </main>
     </BrowserRouter>
