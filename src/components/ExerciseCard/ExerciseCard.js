@@ -10,7 +10,6 @@ const ExerciseCard = ({ exercise }) => {
             <span className="exercise-card__name">{exerciseName}</span>
             <span className="exercise-card__name">Target Muscles: {exercise.target}</span>
             <span className="exercise-card__name">Requires: {exercise.equipment}</span>
-            
         </div>
     );
 }

@@ -1,4 +1,8 @@
-.explore-list {
+.explore {
+    background-image: url('../../assets/images/main-bg.jpg');
+    background-position: center;
+    background-size: cover;
+
     &__cards {
         display: flex;
         flex-wrap: wrap;

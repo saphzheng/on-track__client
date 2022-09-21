@@ -1,0 +1,33 @@
+.workouts {
+    width: 100%;
+    padding: 1rem;
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    &__content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__dates {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    &__button {
+        margin-bottom: 1rem;
+    }
+
+    &__month {
+        font-size: 1.5rem;
+    }
+}
