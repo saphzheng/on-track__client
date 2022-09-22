@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage/HomePage';
 import ExploreByBodyPart from './pages/ExploreByBodyPart/ExploreByBodyPart';
 import BodyPartDetails from './pages/BodyPartDetails/BodyPartDetails';
 import WorkoutsByMonth from './pages/WorkoutsByMonth/WorkoutsByMonth';
+import WorkoutDetails from './pages/WorkoutDetails/WorkoutDetails';
 
 function App() {
   const { loginWithRedirect, user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -34,6 +35,8 @@ function App() {
       console.log(user)
   }, []);
 
+  const date = new Date();
+
   return (
     <BrowserRouter>
       <Header />
@@ -41,7 +44,8 @@ function App() {
         {isAuthenticated ? <Sidebar /> : null}
         <Routes>
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
-          <Route path="/workouts/byMonth" element={<WorkoutsByMonth />} />
+          <Route path="/workouts" element={<WorkoutsByMonth />} />
+          <Route path="/workouts/:date" element={<WorkoutDetails />} />
           <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
           <Route path="/explore/byBodyPart/:bodyPart" element={<BodyPartDetails />} />
         </Routes>

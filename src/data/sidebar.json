@@ -9,12 +9,12 @@
         "icon": "bi-person",
         "children": [
             {
-                "title": "By Month",
-                "path": "/workouts/byMonth"
+                "title": "Today",
+                "path": "/workouts/today"
             },
             {
-                "title": "By Day",
-                "path": "/workouts/byDay"
+                "title": "Overview",
+                "path": "/workouts"
             }
         ]
     },

@@ -32,7 +32,7 @@ const BodyPartDetails = () => {
 
     return (
         <section className="bodypart-details">
-            <h1 className="bodypart-details__title">{bodyPart}</h1>
+            <h1 className="page-title">{bodyPart}</h1>
             <div className="bodypart-details__cards">
                 {exerciseList.slice(0,12).map(exercise => <ExerciseCard key={uuid()} exercise={exercise} />)}
             </div>

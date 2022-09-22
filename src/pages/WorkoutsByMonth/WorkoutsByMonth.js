@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { format } from "date-fns";
 
 const WorkoutsByMonth = () => {
-    const [currentDate, setCurrentDate] = useState(new Date());
-
+    const [ currentDate, setCurrentDate ] = useState(new Date());
     const handleSetToday = () => setCurrentDate(new Date());
+
     return (
         <section className="workouts">
-            <h1 className="workouts__title">My Workouts</h1>
+            <h1 className="page-title">My Workouts</h1>
             <div className="workouts__content">
                 <div className="workouts__dates">
                     <button className="workouts__button text-white bg-blue-600 active:bg-blue-700 text-sm px-4 py-1.5 rounded" onClick={handleSetToday}>

@@ -23,9 +23,9 @@ const Calendar = ({ value, onChange }) => {
     
     const handleClickDate = (index) => {
         const date = setDate(value, index);
-        console.log(format(date, "LLddyyyy"));
+        console.log(format(date, "LLLLddyyyy"));
         onChange(date);
-        // navigate(`/workouts/${format(date, "LLddyyyy")}`);
+        navigate(`/workouts/${format(date, "LL-dd-yyyy")}`);
     };
 
     return (
@@ -40,7 +40,7 @@ const Calendar = ({ value, onChange }) => {
                 <Cell key={uuid()} />
 
                 {weeks.map((week) => (
-                <Cell className="text-xs font-bold uppercase">{week}</Cell>
+                <Cell key={uuid()} className="text-xs font-bold uppercase">{week}</Cell>
                 ))}
 
                 {Array.from({ length: prefixDays }).map((_, index) => (
