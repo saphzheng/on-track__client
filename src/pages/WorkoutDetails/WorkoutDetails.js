@@ -39,7 +39,7 @@ const WorkoutDetails = () => {
             <ul className="workout-list">
                 {workoutData.exercises.map(exercise => {
                     return (
-                        <li>
+                        <li className="workout-list__entry">
                             <span>{exercise.exerciseName}</span>
                             Weight: {exercise.weight}
                             Sets: {exercise.sets}

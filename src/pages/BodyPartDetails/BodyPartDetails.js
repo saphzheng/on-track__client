@@ -5,11 +5,19 @@ import { useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import ExerciseCard from '../../components/ExerciseCard/ExerciseCard';
+import ExerciseModal from '../../components/ExerciseModal/ExerciseModal';
 
 const BodyPartDetails = () => {
     const { getAccessTokenSilently } = useAuth0();
-    const [ exerciseList, setExerciseList ] = useState([]);
     const { bodyPart } = useParams();
+    const [ exerciseList, setExerciseList ] = useState([]);
+    const [ open, setOpen ] = useState(false);
+    const [ selected, setSelected ] = useState()
+
+    const handleClick = (exercise) => {
+        setOpen(true);
+        setSelected(exercise);
+    }
 
     async function getBodyPartExercises() {
         try {
@@ -31,12 +39,17 @@ const BodyPartDetails = () => {
     }, []);
 
     return (
-        <section className="bodypart-details">
+        <>
+            <section className="bodypart-details">
             <h1 className="page-title">{bodyPart}</h1>
             <div className="bodypart-details__cards">
-                {exerciseList.slice(0,12).map(exercise => <ExerciseCard key={uuid()} exercise={exercise} />)}
+                {exerciseList.slice(0,12).map(exercise => 
+                    <ExerciseCard key={uuid()} exercise={exercise} handleClick={handleClick} />)}
             </div>
-        </section>
+            </section>
+            <ExerciseModal open={open} setOpen={setOpen} exercise={selected} />
+        </>
+
     );
 }
 
