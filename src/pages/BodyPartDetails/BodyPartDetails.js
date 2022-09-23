@@ -81,7 +81,7 @@ const BodyPartDetails = () => {
                             {filters.find(filter => filter.bodyPart === bodyPart).muscles &&
                             filters.find(filter => filter.bodyPart === bodyPart).muscles.map(muscle => {
                                 return (
-                                    <option value={muscle}>{muscle}</option>
+                                    <option key={uuid()} value={muscle}>{muscle}</option>
                                 );
                             })}
                         </select>

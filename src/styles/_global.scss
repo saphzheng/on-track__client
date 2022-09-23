@@ -55,13 +55,14 @@ body {
 .secondary-button {
   @extend .primary-button;
   background-color: $primary-text-color;
-  color: gray;
+  color: $border-color;
   border: 1px solid $border-color;
   margin-right: 1rem;
 
   &:hover {
-      color: $primary-text-color;
-      background-color: $border-color;
+    color: $secondary-brand-color;
+    background-color: $primary-text-color;
+    border: 1px solid $secondary-brand-color
   }
 }
 

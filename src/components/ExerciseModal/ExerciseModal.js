@@ -95,7 +95,7 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                 <div className="exercise-modal">
                     <h2 className="exercise-modal__title">{message}</h2>
                     <button className="secondary-button exercise-modal__button--close" onClick={closeModal}>Return To Exercises</button>
-                    <button className="primary-button" onClick={() => navigate('/workouts/today')}>Go To Today's Workout</button>
+                    <button className="primary-button exercise-modal__button--today" onClick={() => navigate('/workouts/today')}>Go To Today's Workout</button>
                 </div>
             </>
         )

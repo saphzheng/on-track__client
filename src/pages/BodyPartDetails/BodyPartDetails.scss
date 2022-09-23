@@ -1,6 +1,6 @@
 @use '../../styles/utilities' as *;
 @use '../../styles/mixins' as *;
-@use '../../styles/global' as *;
+@use '../../styles/global';
 
 .bodypart-details {  
     @extend %page-container;

@@ -37,7 +37,7 @@ const WorkoutDetails = () => {
     return (
         <section className="workout-details">
             <i className="workout-details__back bi-chevron-left" onClick={() => navigate(-1)}></i>
-            <h1 className="details-title">{currentDate.toDateString()}</h1>
+            <h1 className="page-title">{currentDate.toDateString()}</h1>
             {workoutData ?
             <ul className="workout-list">
                 {workoutData.map(exercise => {

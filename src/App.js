@@ -1,7 +1,8 @@
 import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import format from 'date-fns/format';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -13,30 +14,13 @@ import WorkoutDetails from './pages/WorkoutDetails/WorkoutDetails';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 function App() {
-  const { loginWithRedirect, user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-
-  // async function getUserData() {
-  //   try {
-  //       const token = await getAccessTokenSilently();
-  //       const response = await axios.get("http://localhost:8080/user", {
-  //           headers: {
-  //               authorization: `Bearer ${token}`
-  //           }
-  //       });
-  //       console.log(response.data);
-  //       // setUserData(response.data);
-  //       // email, email_verfied, name, nickname, picture, sub, updated
-  //   } catch (error) {
-  //       console.log(error.message);
-  //   }
-  // }
+  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
-      // getUserData();
       console.log(user)
   }, []);
 
-  const date = new Date();
+  const today = format(new Date(), "LL-dd-yyyy");
 
   return (
     <BrowserRouter>
@@ -47,6 +31,7 @@ function App() {
           <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
           <Route path="/workouts" element={<WorkoutsByMonth />} />
           <Route path="/workouts/:date" element={<WorkoutDetails />} />
+          <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
           <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
           <Route path="/explore/byBodyPart/:bodyPart" element={<BodyPartDetails />} />
           <Route path="*" element={<PageNotFound />} />
