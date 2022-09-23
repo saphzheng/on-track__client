@@ -1,3 +1,5 @@
+@use '../styles/utilities' as *;
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -11,6 +13,9 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 1rem;
+  color: $primary-text-color;
+  background-image: linear-gradient(to right, black , white);
+  opacity: 0.8;
 }
 
 .details-title {
@@ -19,4 +24,53 @@ body {
   font-weight: 700;
   display: flex;
   justify-content: center;
+}
+
+.primary-button {
+  height: 2.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0 1rem;
+  background-color: $secondary-brand-color;
+  color: $primary-text-color;
+  border: none;
+
+  &:hover {
+    background-color: $secondary-text-color;
+  }
+
+  &--disabled {
+    background-color: $border-color;
+  }
+}
+
+.secondary-button {
+  @extend .primary-button;
+  background-color: $primary-text-color;
+  color: gray;
+  border: 1px solid $border-color;
+  margin-right: 1rem;
+
+  &:hover {
+      color: $primary-text-color;
+      background-color: $border-color;
+  }
+}
+
+.form-field {
+  height: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid $border-color;
+
+  &::placeholder {
+    color: $border-color;
+  }
+
+  &:focus {
+    outline: 1px solid $secondary-brand-color;
+  }
+
+  &--error {
+    outline: 1px solid $error-color;
+  }
 }

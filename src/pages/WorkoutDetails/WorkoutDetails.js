@@ -2,11 +2,12 @@ import './WorkoutDetails.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
 const WorkoutDetails = () => {
     const { date } = useParams();
-    const { getAccessTokenSilently } = useAuth0();
+    const { getAccessTokenSilently, user } = useAuth0();
 
     const currentDate = new Date(date);
     const [ workoutData, setWorkoutData ] = useState(undefined);
@@ -14,7 +15,7 @@ const WorkoutDetails = () => {
     async function getWorkoutSession() {
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.get(`http://localhost:8080/workout/${date}`, {
+            const response = await axios.get(`http://localhost:8080/exerciseLog/${date}/?user=${user.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
@@ -37,9 +38,9 @@ const WorkoutDetails = () => {
             <h1 className="details-title">{currentDate.toDateString()}</h1>
             {workoutData ?
             <ul className="workout-list">
-                {workoutData.exercises.map(exercise => {
+                {workoutData.map(exercise => {
                     return (
-                        <li className="workout-list__entry">
+                        <li key={uuid()} className="workout-list__entry">
                             <span>{exercise.exerciseName}</span>
                             Weight: {exercise.weight}
                             Sets: {exercise.sets}

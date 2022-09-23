@@ -1,31 +1,50 @@
-@use '../../styles/colors' as *;
+@use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
 
 .exercise-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    flex-basis: 20%;
-    background-color: $primary-brand-color;
-    border: 1px solid $secondary-text-color;
-    margin-left: 1rem;
+    flex-basis: 22%;
+    background-color: $card-color;
     margin-bottom: 1rem;
     cursor: pointer;
     text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: $secondary-text-color 2px 2px 2px;
     color: $secondary-text-color;
+    filter: grayscale(0.6);
+
+    @include desktop {
+        flex-basis: 17%;
+    }
 
     &:hover {
         transform: scale(1.1);
         transition: transform 0.3s;
+        filter: grayscale(0);
+        color: $secondary-brand-color;
+
+        & > img {
+            opacity: 1;
+        }
     }
 
     &__gif {
         margin: 0.5rem;
-        width: 8rem;
+        max-width: 8rem;
+        opacity: 0.6;
+        box-shadow: 0 0 5px 5px #FFFFFF;
     }
 
     &__name {
         margin: 0.5rem;
         font-weight: 700;
+        max-width: 8rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
     }
 }

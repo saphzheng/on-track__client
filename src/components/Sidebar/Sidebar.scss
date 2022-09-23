@@ -1,6 +1,8 @@
+@use '../../styles/utilities' as *;
+
 .sidebar {
-    background-color: rgba(22, 22, 22, 1);
-    width: 14rem;
+    background-color: $sidebar-bg-color;
+    width: 12rem;
     min-height: calc(100vh - 80px);
     align-self: stretch;
     flex-shrink: 0;

@@ -1,6 +1,11 @@
-.bodypart-details {    
+.bodypart-details {  
+    background-image: url('../../assets/images/main-bg2.jpg');
+    background-position: center;
+    background-size: cover;
+      
     &__cards {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 }

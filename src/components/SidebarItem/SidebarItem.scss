@@ -1,9 +1,10 @@
-@use '../../styles/colors.scss' as *;
+@use '../../styles/utilities.scss' as *;
 
 .sidebar-item {
     width: 100%;
     color: $primary-text-color;
     cursor: default;
+    font-size: 0.9rem;
 
     &--single {
         text-decoration: none;
@@ -17,7 +18,7 @@
         transition: background-color 0.3s;
 
         &:hover {
-            background-color: rgb(67, 67, 67);
+            background-color: $sidebar-hover-color;
         }
     }
 
@@ -51,15 +52,15 @@
 
     &__child {
         padding-left: 2rem;
-        background-color: rgb(33, 33, 33);
+        background-color: $sidebar-child-color;
         color: $primary-text-color;
-        border-bottom: 1px solid rgb(58, 58, 58);
+        border-bottom: 1px solid $border-color;
         text-decoration: none;
     }
 }
 
 .active {
-    background-color: rgba(255, 192, 82, 0.804) !important;
+    background-color: $active-link-color !important;
     color: $secondary-text-color;
 }
 
@@ -75,6 +76,6 @@
     }
 
     & > .sidebar-item__title:hover {
-        background-color: rgba(22, 22, 22, 1);
+        background-color: $sidebar-bg-color;
     }
 }

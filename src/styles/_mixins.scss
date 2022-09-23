@@ -1,0 +1,20 @@
+@use "./utilities" as *;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+// flex contents and align according to parameters (default center)
+@mixin flex-contents ($main:center, $cross:center) {
+    display: flex;
+    justify-content: $main;
+    align-items: $cross;
+  }

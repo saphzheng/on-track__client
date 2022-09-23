@@ -1,18 +1,22 @@
-@use '../../styles/colors' as *;
+@use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
 
 .bodypart-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-basis: 20%;
+    flex-basis: 23%;
     background-color: $primary-brand-color;
     border: 1px solid $secondary-text-color;
-    margin-left: 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
     text-decoration: none;
     color: $secondary-text-color;
+
+    @include desktop {
+        flex-basis: 17%;
+    }
 
     &:hover {
         transform: scale(1.1);
