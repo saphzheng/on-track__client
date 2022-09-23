@@ -21,7 +21,8 @@
     },
     {
         "bodyPart": "Upper Arms",
-        "muscles": ["Biceps", "Triceps"]
+        "muscles": ["Biceps", "Triceps"],
+        "equipment": ["Assisted", "Leverage Machine", "Band", "Barbell", "Body Weight", "Cable", "Dumbbell", "Stability Ball", "EZ Barbell", "Kettlebell", "Medicine Ball", "Olympic Barbell", "Resistance Band", "Skierg Machine", "Smith Machine", "Weighted"]
     },
     {
         "bodyPart": "Lower",

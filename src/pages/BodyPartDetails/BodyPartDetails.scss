@@ -6,6 +6,8 @@
     background-position: center;
     background-size: cover;
     width: 100%;
+    padding-bottom: 4rem;
+    position: relative;
 
     &__filter-btn {
         position: relative;
@@ -17,15 +19,69 @@
     }
 
     &__filters {
+        @include flex-contents(flex-start);
         cursor: pointer;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-out;
+        background-color: $border-color;
+        opacity: 0.9;
+        margin: 0 2rem 1rem;
+        border-radius: 2px;
 
         &--open {
             max-height: 10rem;
             transition: max-height 0.5s ease-in;
         }
+    }
+
+    &__label {
+        @include flex-contents(flex-start, flex-start);
+        flex-direction: column;
+        color: $non-focus-color;
+        margin: 0.5rem 2rem 0 1rem;
+    }
+
+    &__dropdown {
+        font-size: 0.9rem;
+        color: $border-color;
+        border-radius: 1px;
+        margin-bottom: 1rem;
+        margin-top: 0.25rem;
+        border: none;
+    }
+
+    &__button {
+        background-color: $non-focus-color;
+        border-radius: 2px;
+        padding: 0 1rem;
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+
+    &__page-btns {
+        color: $primary-text-color;
+        position: absolute;
+        cursor: pointer;
+
+        &--top {
+            right: 1.75rem;
+            top: 6.25rem;
+        }
+
+        &--bottom {
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__next {
+        margin-left: 0.25rem;
+    }
+
+    &__prev {
+        margin-right: 0.2rem;
     }
       
     &__cards {

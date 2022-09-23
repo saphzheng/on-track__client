@@ -1,7 +1,8 @@
 import './ExerciseCard.scss';
 
 const ExerciseCard = ({ exercise, handleClick }) => {
-    const exerciseName = exercise.name.split(" ").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
+    // console.log(exercise.name.split(" ").forEach(word => console.log(word)));
+    const exerciseName = exercise.name.split(" ").map(word => (word[0] && word[0].toUpperCase()) + word.slice(1)).join(" ");
 
     return (
         <div className="exercise-card" onClick={() => handleClick(exercise)}>

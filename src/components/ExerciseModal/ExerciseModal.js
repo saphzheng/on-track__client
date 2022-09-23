@@ -1,10 +1,12 @@
 import './ExerciseModal.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import axios from 'axios';
 
 const ExerciseModal = ({ open, setOpen, exercise }) => {
+    const navigate = useNavigate();
     const { getAccessTokenSilently, user } = useAuth0();
     const [ openForm, setOpenForm ] = useState(false);
     const [ submit, setSubmit ] = useState(false);
@@ -54,7 +56,6 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
             setMessage("Error Adding - Try Again.");
             setSubmit(true);
         }
-
     }
 
     if(!submit) {
@@ -93,7 +94,8 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                 <div className="modal-overlay"></div>
                 <div className="exercise-modal">
                     <h2 className="exercise-modal__title">{message}</h2>
-                    <button className="secondary-button exercise-modal__button--close" onClick={closeModal}>Close</button>
+                    <button className="secondary-button exercise-modal__button--close" onClick={closeModal}>Return To Exercises</button>
+                    <button className="primary-button" onClick={() => navigate('/workouts/today')}>Go To Today's Workout</button>
                 </div>
             </>
         )
