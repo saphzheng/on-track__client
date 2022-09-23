@@ -29,7 +29,7 @@ const Calendar = ({ value, onChange }) => {
     };
 
     return (
-        <div className="w-[50vw] border-t border-l">
+        <div className="calendar w-[50vw] border-t border-l">
             <div className="grid grid-cols-7 items-center justify-center text-center">
                 <Cell key={uuid()} />
                 <Cell onClick={prevYear}>{"<<"}</Cell>

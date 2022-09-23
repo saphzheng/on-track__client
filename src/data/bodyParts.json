@@ -1,14 +1,6 @@
 [
     {
-        "name": "Waist",
-        "image": ""
-    }, 
-    {
-        "name": "Upper Legs",
-        "image": ""
-    },
-    {
-        "name": "Lower Legs",
+        "name": "Shoulders",
         "image": ""
     },
     {
@@ -28,7 +20,23 @@
         "image": ""
     },
     {
+        "name": "Upper Legs",
+        "image": ""
+    },
+    {
+        "name": "Lower Legs",
+        "image": ""
+    },
+    {
+        "name": "Waist",
+        "image": ""
+    }, 
+    {
         "name": "Cardio",
         "image": ""
-    } 
+    },
+    {
+        "name": "Neck",
+        "image": ""
+    }
 ]

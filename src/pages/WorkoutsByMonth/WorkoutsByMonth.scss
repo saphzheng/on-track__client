@@ -1,6 +1,12 @@
+@use '../../styles/utilities' as *;
+
 .workouts {
     width: 100%;
     padding: 1rem;
+    background-image: url('../../assets/images/image.jpg');
+    background-position: center;
+    background-size: cover;
+    color: $primary-text-color;
 
     &__content {
         width: 100%;

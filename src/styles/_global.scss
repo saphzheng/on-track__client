@@ -13,8 +13,9 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin: 1rem;
+  margin-left: 2rem;
   color: $primary-text-color;
-  background-image: linear-gradient(to right, black , white);
+  background-image: linear-gradient(to right, black 10%, rgba(255, 255, 255, 0.678));
   opacity: 0.8;
 }
 

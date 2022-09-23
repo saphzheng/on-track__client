@@ -1,0 +1,42 @@
+[
+    {
+        "bodyPart": "Waist",
+        "muscles": ["Abs"]
+    },
+    {
+        "bodyPart": "Upper Legs",
+        "muscles": ["Quads", "Glutes", "Hamstrings", "Adductors", "Abductors"]
+    },
+    {
+        "bodyPart": "Lower Legs",
+        "muscles": ["Calves"]
+    },
+    {
+        "bodyPart": "Chest",
+        "muscles": ["Pectorals", "Serratus Anterior"]
+    },
+    {
+        "bodyPart": "Back",
+        "muscles": ["Lats", "Spine", "Upper Back", "Traps"]
+    },
+    {
+        "bodyPart": "Upper Arms",
+        "muscles": ["Biceps", "Triceps"]
+    },
+    {
+        "bodyPart": "Lower",
+        "muscles": ["Forearms"]
+    },
+    {
+        "bodyPart": "Cardio",
+        "muscles": ["Cardiovascular System"]
+    },
+    {
+        "bodyPart": "Shoulders",
+        "muscles": ["Delts"]
+    },
+    {
+        "bodyPart": "Neck",
+        "muscles": ["Levator Scapulae"]
+    }
+]

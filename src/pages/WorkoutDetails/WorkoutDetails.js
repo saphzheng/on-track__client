@@ -1,11 +1,12 @@
 import './WorkoutDetails.scss';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
 const WorkoutDetails = () => {
+    const navigate = useNavigate();
     const { date } = useParams();
     const { getAccessTokenSilently, user } = useAuth0();
 
@@ -35,6 +36,7 @@ const WorkoutDetails = () => {
 
     return (
         <section className="workout-details">
+            <i className="workout-details__back bi-arrow-left" onClick={() => navigate(-1)}></i>
             <h1 className="details-title">{currentDate.toDateString()}</h1>
             {workoutData ?
             <ul className="workout-list">
