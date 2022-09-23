@@ -1,0 +1,10 @@
+@use '../../styles/global' as *;
+
+.page-not-found {
+    @extend %page-container;
+
+    &__button {
+        margin-left: 2rem;
+    }
+    
+}

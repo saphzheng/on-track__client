@@ -1,11 +1,9 @@
 @use '../../styles/utilities' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/global' as *;
 
 .bodypart-details {  
-    background-image: url('../../assets/images/image.jpg');
-    background-position: center;
-    background-size: cover;
-    width: 100%;
+    @extend %page-container;
     padding-bottom: 4rem;
     position: relative;
 

@@ -10,6 +10,7 @@ import ExploreByBodyPart from './pages/ExploreByBodyPart/ExploreByBodyPart';
 import BodyPartDetails from './pages/BodyPartDetails/BodyPartDetails';
 import WorkoutsByMonth from './pages/WorkoutsByMonth/WorkoutsByMonth';
 import WorkoutDetails from './pages/WorkoutDetails/WorkoutDetails';
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 function App() {
   const { loginWithRedirect, user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -48,6 +49,7 @@ function App() {
           <Route path="/workouts/:date" element={<WorkoutDetails />} />
           <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
           <Route path="/explore/byBodyPart/:bodyPart" element={<BodyPartDetails />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
     </BrowserRouter>
