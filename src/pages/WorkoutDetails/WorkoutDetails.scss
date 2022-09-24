@@ -1,11 +1,48 @@
+@use '../../styles/mixins' as *;
 @use '../../styles/utilities' as *;
 @use '../../styles/global';
 
 .workout-details {
     @extend %page-container;
+
+    &__header {
+        @include flex-contents (flex-start);
+        margin: 0 2rem;
+    }
+
+    &__label {
+        flex-basis: 11%;
+
+        &--exercise {
+            flex-basis: 67%;
+        }
+    }
+
+    &__message {
+        margin: 2rem;
+    }
 }
 
 .workout-list {
-    margin: 2rem;
-    color: $primary-text-color;
+    margin: 0.5rem 2rem;
+    font-weight: 500;
+
+    &__entry {
+        @include flex-contents (flex-start);
+        background-color: $primary-text-color;
+        color: $secondary-text-color;
+        opacity: 0.8;
+        border-bottom: 1px solid $border-color;
+        border-radius: 4px;
+    }
+
+    &__value {
+        flex-basis: 11%;
+        padding: 1rem;
+
+        &--exercise {
+            flex-basis: 67%;
+            color: $secondary-brand-color;
+        }
+    }
 }

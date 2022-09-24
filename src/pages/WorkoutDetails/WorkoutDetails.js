@@ -8,6 +8,7 @@ import axios from 'axios';
 const WorkoutDetails = () => {
     const navigate = useNavigate();
     const { date } = useParams();
+    console.log(date)
     const { getAccessTokenSilently, user } = useAuth0();
 
     const currentDate = new Date(date);
@@ -30,28 +31,34 @@ const WorkoutDetails = () => {
 
     useEffect(() => {
         getWorkoutSession();
-    }, [date]);
-
-    console.log(workoutData)
+    }, [date]);  
 
     return (
         <section className="workout-details">
-            <i className="workout-details__back bi-chevron-left" onClick={() => navigate(-1)}></i>
+            <i className="back-button bi-chevron-left" onClick={() => navigate(-1)}></i>
             <h1 className="page-title">{currentDate.toDateString()}</h1>
-            {workoutData ?
+            {console.log(workoutData)}
+            {workoutData && workoutData.length === 0 ? null :
+            <ul className="workout-details__header">
+                <li className="workout-details__label workout-details__label--exercise">Exercise Name</li>
+                <li className="workout-details__label">Weight</li>
+                <li className="workout-details__label">Sets</li>
+                <li className="workout-details__label">Reps</li>
+            </ul>}
+            {workoutData && workoutData.length !== 0 ?
             <ul className="workout-list">
                 {workoutData.map(exercise => {
                     return (
                         <li key={uuid()} className="workout-list__entry">
-                            <span>{exercise.exerciseName}</span>
-                            Weight: {exercise.weight}
-                            Sets: {exercise.sets}
-                            Reps: {exercise.reps}
+                            <span className="workout-list__value workout-list__value--exercise">{exercise.exerciseName}</span>
+                            <span className="workout-list__value">{exercise.weight}</span>
+                            <span className="workout-list__value">{exercise.sets}</span>
+                            <span className="workout-list__value">{exercise.reps}</span>
                         </li>
                     )
                 })}
             </ul> :
-            <span>No workouts recorded for this day</span>}
+            <span className="workout-details__message">No workouts recorded for this day.</span>}
         </section>
     );
 }

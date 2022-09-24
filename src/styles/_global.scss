@@ -7,6 +7,7 @@
 body {
   margin: 0;
   padding: 0;
+  color: $primary-text-color;
 }
 
 %page-container {
@@ -64,6 +65,16 @@ body {
     background-color: $primary-text-color;
     border: 1px solid $secondary-brand-color
   }
+}
+
+.back-button {
+  color: $primary-text-color;
+  position: relative;
+  top: 1rem;
+  left: 2rem;
+  z-index: 100;
+  min-width: 2rem;
+  cursor: pointer;
 }
 
 .form-field {

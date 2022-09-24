@@ -14,7 +14,7 @@ import WorkoutDetails from './pages/WorkoutDetails/WorkoutDetails';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 function App() {
-  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
       console.log(user)
@@ -28,10 +28,10 @@ function App() {
       <main className="main">
         {isAuthenticated ? <Sidebar /> : null}
         <Routes>
-          <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage loginWithRedirect={loginWithRedirect} />} />
+          <Route path="/" element={isAuthenticated ? <HomePage /> : <LandingPage />} />
           <Route path="/workouts" element={<WorkoutsByMonth />} />
-          <Route path="/workouts/:date" element={<WorkoutDetails />} />
           <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
+          <Route path="/workouts/:date" element={<WorkoutDetails />} />
           <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
           <Route path="/explore/byBodyPart/:bodyPart" element={<BodyPartDetails />} />
           <Route path="*" element={<PageNotFound />} />

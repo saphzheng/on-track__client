@@ -1,8 +1,11 @@
 import './LandingPage.scss';
 import landingImage from '../../assets/images/landing-image.jpg';
 import { Parallax } from 'react-parallax';
+import { useAuth0 } from '@auth0/auth0-react';
 
-const LandingPage = ({ loginWithRedirect }) => {
+const LandingPage = () => {
+    const { loginWithRedirect } = useAuth0();
+    
     return (
         <Parallax className="landing" blur={3} bgImage={landingImage} strength={600}>
             <div className="hero__content">
