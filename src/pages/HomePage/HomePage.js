@@ -1,13 +1,13 @@
 import './HomePage.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
-import { Line } from 'react-chartjs-2';
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from "chart.js";
+import { Line, Bar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const HomePage = () => {
-    Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+    Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
     Chart.defaults.color = "#000";
     const { user, getAccessTokenSilently } = useAuth0();
     const [ weightData, setWeightData ] = useState();
@@ -153,9 +153,6 @@ const HomePage = () => {
         });
     }
 
-    console.log(weightData)
-    console.log(freqData)
-
     if (newUser) {
         return (
             <section className="progress">
@@ -189,7 +186,7 @@ const HomePage = () => {
                     <div className="progress__graph-container">
                         <h2 className="progress__graph-title">Average Workout Frequency</h2>
                         <div className="progress__graph">
-                            <Line options={options} data={freqData} />
+                            <Bar options={options} data={freqData} />
                         </div>
                         
                     </div>
