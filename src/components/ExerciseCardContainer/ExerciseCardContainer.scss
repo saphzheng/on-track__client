@@ -1,0 +1,63 @@
+@use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
+
+.exercise-cards {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    margin: 0 1.5rem;
+
+    @include smallTablet {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include largeTablet {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include desktop {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    &__page-btns {
+      position: absolute;
+  
+      &--top {
+          right: 1.75rem;
+          top: 6.25rem;
+      }
+  
+      &--bottom {
+          bottom: 1rem;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+    }
+  
+    &__next {
+        margin-left: 0.25rem;
+        cursor: pointer;
+    }
+  
+    &__prev {
+        margin-right: 0.2rem;
+        cursor: pointer;
+    }
+
+    &__dropdown {
+        margin-bottom: 1rem;
+        margin-top: 0.25rem;
+        cursor: pointer;
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: $border-color;
+}

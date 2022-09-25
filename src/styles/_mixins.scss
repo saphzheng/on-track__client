@@ -6,6 +6,18 @@
   }
 }
 
+@mixin smallTablet {
+  @media (min-width: 520px) {
+    @content;
+  }
+}
+
+@mixin largeTablet {
+  @media (min-width: 820px) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media (min-width: $desktop-breakpoint) {
     @content;
