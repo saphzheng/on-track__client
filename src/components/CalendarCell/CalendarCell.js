@@ -3,8 +3,7 @@ const Cell = ({ onClick, children, isActive }) => {
     <div
       onClick={onClick}
       className={`h-10 border-b border-r flex items-center justify-center select-none transition-colors 
-        ${!isActive && onClick ? "cursor-pointer hover:bg-gray-100 active:bg-gray-200": ""} ${isActive ? "font-bold text-white bg-blue-600" : ""}`}
-    >
+        ${onClick ? "cursor-pointer hover:bg-black active:bg-gray-200": ""} ${isActive ? "font-bold text-white bg-blue-800" : ""}`}>
       {children}
     </div>
   );

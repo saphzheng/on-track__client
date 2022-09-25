@@ -31,7 +31,7 @@ const WorkoutDetails = () => {
 
     useEffect(() => {
         getWorkoutSession();
-    }, [date]);  
+    }, [date, user]);  
 
     return (
         <section className="workout-details">

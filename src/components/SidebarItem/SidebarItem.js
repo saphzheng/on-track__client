@@ -9,18 +9,18 @@ const SidebarItem = ({ item }) => {
     if (item.children) {
         return (
             <div className={`sidebar-item ${open ? "sidebar-item--open" : ""}`}>
-                <div className="sidebar-item__title">
+                <div className="sidebar-item__content">
                     {item.icon && <i className={`sidebar-item__icon ${item.icon}`}></i>}
-                    <span>{item.title}</span>
+                    <span className="sidebar-item__title">{item.title}</span>
                     <i className={`bi-chevron-down sidebar-item__expand ${open ? "sidebar-item__expand--open" : ""}`}
                         onClick={() => setOpen(!open)}></i>
                 </div>
                 <div className={`sidebar-item__children ${open ? "sidebar-item__children--open" : ""}`}>
                     {item.children.map(child => {
                         return (
-                            <NavLink key={uuid()} className={`sidebar-item__title sidebar-item__child 
+                            <NavLink key={uuid()} className={`sidebar-item__content sidebar-item__child 
                                 ${({ isActive }) => isActive ? "active" : ""}`} to={child.path}>
-                                <span>{child.title}</span>
+                                <span className="sidebar-item__title">{child.title}</span>
                             </NavLink>
                         );
                     })}
@@ -30,10 +30,10 @@ const SidebarItem = ({ item }) => {
     } else {
         return (
             <div className="sidebar-item">
-                <NavLink className={`sidebar-item__title sidebar-item--single 
+                <NavLink className={`sidebar-item__content sidebar-item--single 
                     ${({ isActive }) => isActive ? "active" : ""}`} end to={item.path}>
                     {item.icon && <i className={`sidebar-item__icon ${item.icon}`}></i>}
-                    <span>{item.title}</span>
+                    <span className="sidebar-item__title">{item.title}</span>
                 </NavLink>
             </div>
         )

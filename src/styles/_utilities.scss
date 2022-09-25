@@ -1,6 +1,6 @@
 // brand colors
 $primary-brand-color: #FFB300;
-$secondary-brand-color: #1945aa;
+$secondary-brand-color: #1945AA;
 
 // text colors
 $primary-text-color: #FFFFFF;
@@ -8,15 +8,16 @@ $secondary-text-color: #000000;
 
 // background colors
 $sidebar-bg-color: #161616;
-$sidebar-child-color: #212121;
+$visual-bg-color: rgba(255, 255, 255, 0.2);
 
 // miscellaneous 
 $error-color: #EA0000;
 $active-link-color: rgba(255, 192, 82, 0.804);
+$sidebar-child-color: #212121;
 $border-color: #3A3A3A;
 $sidebar-hover-color: #434343;
 $card-color: rgba(255, 255, 255, 0.9);
-$non-focus-color: rgb(174, 174, 174);
+$non-focus-color: #AEAEAE;
 
 // breakpoints
 $tablet-breakpoint: 768px;

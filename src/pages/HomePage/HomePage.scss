@@ -1,0 +1,66 @@
+@use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/global';
+
+.progress {
+    @extend %page-container;
+
+    &__graphs {
+        @include flex-contents(space-evenly, flex-start);
+        width: 100%;
+    }
+
+    &__graph-container {
+        flex-basis: 45%;
+        margin: 1rem;
+    }
+
+    &__graph {
+        border-radius: 4px;
+        background-color: $card-color;
+        width: 100%;
+    }
+
+    &__dropdown {
+        color: $secondary-text-color;
+        margin-top: 1rem;
+        width: 48%;
+        cursor: pointer;
+        
+        &--one {
+            margin-right: 1rem;
+            border: 3px solid $secondary-brand-color;
+            background-color: #78a1ff;
+        }
+
+        &--two {
+            border: 3px solid rgb(255, 74, 105);
+            background-color: pink;
+        }
+    }
+
+    &__content {
+        @include flex-contents();
+        flex-direction: column;
+        margin-top: 12rem;
+    }
+
+    &__welcome {
+        color: $primary-brand-color;
+        font-size: 3rem;
+        font-weight: 600;
+        text-shadow: -1px 1px $primary-text-color;
+    }
+
+    &__text {
+        font-size: 1.5rem;
+    }
+
+    &__link {
+        color: $secondary-brand-color;
+        font-weight: 500;
+        font-style: italic;
+        text-decoration: underline;
+    }
+}
+

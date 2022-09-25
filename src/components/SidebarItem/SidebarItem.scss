@@ -11,9 +11,10 @@
         cursor: pointer;
     }
 
-    &__title {
+    &__content {
         display: flex;
-        padding: 1rem;
+        padding: 0.75rem;
+        padding-bottom: 1rem;
         transition: background-color 0.3s;
 
         &:hover {
@@ -21,9 +22,17 @@
         }
     }
 
+    &__title {
+        margin-left: 0.25rem;
+        position: relative;
+        top: 0.25rem;
+    }
+
     &__icon {
         margin-right: 0.5rem;
+        padding: 0.25rem 0.5rem;
         width: 1rem;
+        // border-left: 2px solid $sidebar-bg-color;
     }
 
     &__expand {
@@ -31,10 +40,14 @@
         margin-left: auto;
         transform: rotate(0);
         transition: transform 0.3s;
+        position: relative;
+        top: 0.25rem;
 
         &--open {
             transform: rotate(180deg);
             transition: transform 0.3s;
+            position: relative;
+            top: -0.25rem;
         }
     }
 
@@ -60,10 +73,15 @@
 .active {
     background-color: $active-link-color !important;
     color: $secondary-text-color;
+    font-weight: 500;
 }
 
 .sidebar-item:has(.active) {
     cursor: default;
+    
+    & > div > i:first-child {
+        border-left: 2px solid $active-link-color;
+    }
 
     & > div {
         @extend .sidebar-item__children--open;
@@ -73,7 +91,7 @@
         pointer-events: none;       
     }
 
-    & > .sidebar-item__title:hover {
+    & > .sidebar-item__content:hover {
         background-color: $sidebar-bg-color;
     }
 }

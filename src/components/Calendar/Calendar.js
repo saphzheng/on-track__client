@@ -23,7 +23,6 @@ const Calendar = ({ value, onChange }) => {
     
     const handleClickDate = (index) => {
         const date = setDate(value, index);
-        console.log(format(date, "LLLLddyyyy"));
         onChange(date);
         navigate(`/workouts/${format(date, "LL-dd-yyyy")}`);
     };

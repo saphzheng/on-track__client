@@ -1,13 +1,13 @@
 @use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
 
 .header {
     background-image: linear-gradient(to right, white 15%, $primary-brand-color 80%);
-    padding: 1rem 1rem 1rem 0.1rem;
+    padding: 0.5rem 1rem 0.5rem 0.1rem;
     color: $secondary-text-color;
 
     &__content {
-        display: flex;
-        align-items: center;
+        @include flex-contents();
     }
     
     &__logo {
