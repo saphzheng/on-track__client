@@ -28,7 +28,8 @@ function App() {
       <main className="main">
         {isAuthenticated ? <Sidebar /> : null}
         <Routes>
-          <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <LandingPage />} />
+          {/* <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <LandingPage />} /> */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/workouts" element={<WorkoutsByMonth />} />
           <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />

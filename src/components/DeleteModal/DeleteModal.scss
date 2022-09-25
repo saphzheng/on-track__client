@@ -43,11 +43,6 @@
         cursor: pointer;
     }
 
-    &__right {
-        @include flex-contents(space-between, flex-start);
-        flex-direction: column;
-    }
-
     &__content {
        @include flex-contents(center, flex-start);
        flex-direction: column;
@@ -81,6 +76,10 @@
         &--close {
             margin: 1rem 0;
             width: 100%;
+        }
+
+        &--delete {
+            color: $error-color;
         }
     }
 

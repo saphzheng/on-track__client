@@ -15,10 +15,12 @@ const HomePage = () => {
     const [ exerciseNames, setExerciseNames ] = useState();
     const [ selectedName1, setSelectedName1 ] = useState();
     const [ selectedName2, setSelectedName2 ] = useState();
+    const [ newUser, setNewUser ] = useState(true);
 
     // options for graph
     const options = {
         responsive: true,
+        spanGaps: true,
         scales: {
             x: {
                 ticks: {
@@ -40,12 +42,16 @@ const HomePage = () => {
     async function getWorkoutData() {
         try {
             const token = await getAccessTokenSilently();
+            console.log(user)
             const response = await axios.get(`http://localhost:8080/exerciseLog/?user=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
             });
             console.log(response.data);
+            if (newUser && response.data.length !== 0) {
+                setNewUser(false);
+            }
             getWeightData(response.data);
             getFreqData(response.data);
         } catch (error) {
@@ -70,22 +76,35 @@ const HomePage = () => {
             });
             setExerciseNames(Object.keys(workoutCount));
             const max = Math.max(...Object.values(workoutCount));
-            const secondMax = Math.max(...Object.values(workoutCount).filter(count => count !== max));
             plottedExercise1 = Object.keys(workoutCount).find(key => workoutCount[key] === max);
-            plottedExercise2 = Object.keys(workoutCount).find(key => workoutCount[key] === secondMax);
             setSelectedName1(plottedExercise1);
+            delete workoutCount[plottedExercise1];
+            const secondMax = Math.max(...Object.values(workoutCount));
+            plottedExercise2 = Object.keys(workoutCount).find(key => workoutCount[key] === secondMax);
             setSelectedName2(plottedExercise2);
         } else {
             plottedExercise1 = selectedName1;
             plottedExercise2 = selectedName2;
         }
         // console.log(mainWorkout);
-        const filteredData1 = data.filter(workout => workout.exerciseName === plottedExercise1);
-        const filteredData2 = data.filter(workout => workout.exerciseName === plottedExercise2);
-        // console.log(filteredData)
+        let filteredData1 = data.filter(workout => workout.exerciseName === plottedExercise1).sort((a, b) => new Date(a.date) - new Date(b.date));
+        let filteredData2 = data.filter(workout => workout.exerciseName === plottedExercise2).sort((a, b) =>new Date(a.date) - new Date(b.date));
+
+        // combine dates for both datasets and sort 
+        let dates = filteredData1.map(workout => workout.date).concat(filteredData2.map(workout => workout.date));
+        dates = [...new Set(dates.sort())];
+        // supplement datasets with empty points to line up with dates
+        dates.forEach((date, index) => {
+            if(!filteredData1[index] || filteredData1[index].date !== date) {
+                filteredData1 = [...filteredData1.slice(0,index), {date: date, weight: null}, ...filteredData1.slice(index)];
+            }
+            if(!filteredData2[index] || filteredData2[index].date !== date) {
+                filteredData2 = [...filteredData2.slice(0,index), {date: date, weight: null}, ...filteredData2.slice(index)];
+            }
+        })
 
         setWeightData({
-            labels: filteredData1.map(workout => workout.date).concat(filteredData2.map(workout => workout.date)),
+            labels: dates,
             datasets: [{
                 label: plottedExercise1,
                 data: filteredData1.map(workout => workout.weight),
@@ -132,9 +151,12 @@ const HomePage = () => {
         return date.toLocaleString('en-US', {
           month: 'long',
         });
-      }
+    }
 
-    if (!weightData && !freqData) {
+    console.log(weightData)
+    console.log(freqData)
+
+    if (newUser) {
         return (
             <section className="progress">
                 <div className="progress__content">
