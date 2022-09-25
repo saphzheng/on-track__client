@@ -1,7 +1,7 @@
+@use '../../styles/global';
+
 .explore {
-    background-image: url('../../assets/images/image.jpg');
-    background-position: center;
-    background-size: cover;
+    @extend %page-container;
 
     &__cards {
         display: flex;

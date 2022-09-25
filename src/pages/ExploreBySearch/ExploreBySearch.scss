@@ -1,0 +1,32 @@
+@use '../../styles/global';
+@use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
+
+.search {
+    @extend %page-container;
+    padding-bottom: 4rem;
+    position: relative;
+
+    &__cta {
+        @include flex-contents();
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        color: $secondary-text-color;
+        border-radius: 5px 0 0 5px;
+        padding: 0 0.3rem;
+        width: 15rem;
+    }
+
+    &__button {
+        padding: 0 0.3rem;
+        border-radius: 0 5px 5px 0;
+        background-color: $border-color;
+    }
+
+    &__instructions {
+        @include flex-contents();
+        margin-top: 1rem;
+    }
+}

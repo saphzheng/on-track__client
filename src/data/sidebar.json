@@ -24,7 +24,7 @@
         "children": [
             {
                 "title": "By Body Part",
-                "path": "/explore/byBodyPart"
+                "path": "/explore/category"
             },
             {
                 "title": "Search",

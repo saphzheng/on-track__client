@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import LandingPage from './pages/LandingPage/LandingPage';
 import HomePage from './pages/HomePage/HomePage';
 import ExploreByBodyPart from './pages/ExploreByBodyPart/ExploreByBodyPart';
+import ExploreBySearch from './pages/ExploreBySearch/ExploreBySearch';
 import BodyPartDetails from './pages/BodyPartDetails/BodyPartDetails';
 import WorkoutsByMonth from './pages/WorkoutsByMonth/WorkoutsByMonth';
 import WorkoutDetails from './pages/WorkoutDetails/WorkoutDetails';
@@ -31,10 +32,11 @@ function App() {
           <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <LandingPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/workouts" element={<WorkoutsByMonth />} />
-          <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
           <Route path="/workouts/:date" element={<WorkoutDetails />} />
-          <Route path="/explore/byBodyPart" element={<ExploreByBodyPart />} />
-          <Route path="/explore/byBodyPart/:bodyPart" element={<BodyPartDetails />} />
+          <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
+          <Route path="/explore/category" element={<ExploreByBodyPart />} />
+          <Route path="/explore/category/:bodyPart" element={<BodyPartDetails />} />
+          <Route path="/explore/search" element={<ExploreBySearch />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
