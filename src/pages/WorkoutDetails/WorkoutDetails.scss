@@ -11,10 +11,10 @@
     }
 
     &__label {
-        flex-basis: 11%;
+        flex-basis: 10%;
 
         &--exercise {
-            flex-basis: 67%;
+            flex-basis: 65%;
         }
     }
 
@@ -37,12 +37,22 @@
     }
 
     &__value {
-        flex-basis: 11%;
+        flex-basis: 10%;
         padding: 1rem;
 
         &--exercise {
-            flex-basis: 67%;
+            flex-basis: 65%;
             color: $secondary-brand-color;
+        }
+    }
+
+    &__delete {
+        flex-basis: 5%;
+        cursor: pointer;
+        color: $error-color;
+
+        &:hover {
+            transform: scale(1.1);
         }
     }
 }

@@ -4,40 +4,45 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
+import DeleteModal from '../../components/DeleteModal/DeleteModal';
 
 const WorkoutDetails = () => {
     const navigate = useNavigate();
     const { date } = useParams();
-    console.log(date)
-    const { getAccessTokenSilently, user } = useAuth0();
-
     const currentDate = new Date(date);
+    const { getAccessTokenSilently, user } = useAuth0();
     const [ workoutData, setWorkoutData ] = useState(undefined);
+    const [ exerciseToDelete, setExerciseToDelete ] = useState();
+    const [ open, setOpen ] = useState(false);
+
+    useEffect(() => {
+        getWorkoutSession();
+    }, [date, user, open]);  
     
     async function getWorkoutSession() {
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.get(`http://localhost:8080/exerciseLog/${date}/?user=${user.email}`, {
+            const response = await axios.get(`http://localhost:8080/exerciseLog/${date}/?user=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
+            // console.log(response.data);
             setWorkoutData(response.data);
         } catch (error) {
             console.log(error.message);
         }
     }
 
-    useEffect(() => {
-        getWorkoutSession();
-    }, [date, user]);  
+    const handleDelete = (exercise) => {
+        setExerciseToDelete(exercise);
+        setOpen(true);
+    }
 
     return (
         <section className="workout-details">
-            <i className="back-button bi-chevron-left" onClick={() => navigate(-1)}></i>
+            <i className="back-button bi-chevron-left" onClick={() => navigate("/workouts")}></i>
             <h1 className="page-title">{currentDate.toDateString()}</h1>
-            {console.log(workoutData)}
             {workoutData && workoutData.length === 0 ? null :
             <ul className="workout-details__header">
                 <li className="workout-details__label workout-details__label--exercise">Exercise Name</li>
@@ -54,11 +59,13 @@ const WorkoutDetails = () => {
                             <span className="workout-list__value">{exercise.weight}</span>
                             <span className="workout-list__value">{exercise.sets}</span>
                             <span className="workout-list__value">{exercise.reps}</span>
+                            <i className="workout-list__delete bi-trash3-fill" onClick={() => handleDelete(exercise)}></i>
                         </li>
                     )
                 })}
             </ul> :
             <span className="workout-details__message">No workouts recorded for this day.</span>}
+            <DeleteModal open={open} setOpen={setOpen} exerciseToDelete={exerciseToDelete} />
         </section>
     );
 }

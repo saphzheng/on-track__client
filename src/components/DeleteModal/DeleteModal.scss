@@ -1,0 +1,124 @@
+@use "../../styles/utilities" as *;
+@use "../../styles/mixins" as *;
+
+@keyframes grow {
+    0% {
+        transform: translate(-50%, -40%) scale(0); transform-origin: 50 0; 
+    }
+    100% {
+        transform: translate(-50%, -40%) scale(1); transform-origin: 50 0;
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.delete-modal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: auto;
+    min-width: 20rem;
+    padding: 2rem 3.5rem;
+    z-index: 100;
+    background-color: $card-color;
+    color: $secondary-text-color;
+    border-radius: 8px;
+    animation: grow 0.2s ease-out;
+    
+    &__close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        cursor: pointer;
+    }
+
+    &__right {
+        @include flex-contents(space-between, flex-start);
+        flex-direction: column;
+    }
+
+    &__content {
+       @include flex-contents(center, flex-start);
+       flex-direction: column;
+    }
+
+    &__gif {
+        max-width: 10rem;
+        margin-right: 2rem;
+        box-shadow: 0 0 5px 5px $primary-text-color;
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    &__detail {
+        border-bottom: 1px solid $secondary-brand-color; 
+    }
+
+    &__button {
+        &--add {
+            margin-top: 0.5rem;
+        }
+
+        &--submit {
+            width: 5rem;
+            margin-left: auto;
+        }
+
+        &--close {
+            margin: 1rem 0;
+            width: 100%;
+        }
+    }
+
+    &__form {
+        @include flex-contents(flex-start, center);
+        max-height: 0;
+        overflow: hidden;
+        margin-top: 1.5rem;
+        transition: max-height 0.5s;
+
+        &--open {
+            max-height: 10rem;
+            transition: max-height 0.5s ease-out;
+        }
+    }
+
+    &__label {
+        @include flex-contents(flex-start, center);
+        margin-right: 0.5rem;
+        color: $secondary-brand-color;
+        font-weight: 500;
+
+        &:not(:first-child) {
+            margin-left: 1.5rem;
+        }
+    }
+
+    &__input {
+        width: 3rem;
+        text-align: right;
+
+        &:nth-child(7){
+            margin-right: 2rem;
+        }
+    }
+
+    &__units {
+        margin-left: 0.25rem;
+    }
+}
+

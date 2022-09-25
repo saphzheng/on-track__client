@@ -70,9 +70,7 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                             <h2 className="exercise-modal__title">{titleCase(exercise.name)}</h2>
                             <p className="exercise-modal__info">Target Muscle: <span className="exercise-modal__detail">{titleCase(exercise.target)}</span></p>
                             <p className="exercise-modal__info">Requires: <span className="exercise-modal__detail">{titleCase(exercise.equipment)}</span></p>
-                            <div className="exercise-modal__buttons">
-                                <button className={`primary-button exercise-modal__button--add ${openForm? "primary-button--disabled" : ""}`} onClick={() => setOpenForm(!openForm)}>Add To Today's Workout</button>
-                            </div>
+                            <button className={`primary-button exercise-modal__button--add ${openForm? "primary-button--disabled" : ""}`} onClick={() => setOpenForm(!openForm)}>Add To Today's Workout</button>
                         </div>
                     </div>
                     <form className={`exercise-modal__form ${openForm? "exercise-modal__form--open" : ""}`} onSubmit={handleSubmit}>

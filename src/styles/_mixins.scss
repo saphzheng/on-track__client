@@ -12,7 +12,7 @@
   }
 }
 
-// flex contents and align according to parameters (default center)
+// flex contents and align according to parameters (default row and center)
 @mixin flex-contents ($main:center, $cross:center) {
     display: flex;
     justify-content: $main;
