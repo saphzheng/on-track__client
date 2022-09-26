@@ -65,6 +65,7 @@ const WorkoutDetails = () => {
                 })}
             </ul> :
             <span className="workout-details__message">No workouts recorded for this day.</span>}
+            {workoutData && workoutData.length !== 0 ? <i className="workout-details__add bi-plus-square" onClick={() => navigate("/explore/category")}> Add Exercise</i> : null }
             <DeleteModal open={open} setOpen={setOpen} exerciseToDelete={exerciseToDelete} />
         </section>
     );

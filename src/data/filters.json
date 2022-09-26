@@ -6,7 +6,8 @@
     },
     {
         "bodyPart": "Upper Legs",
-        "muscles": ["Quads", "Glutes", "Hamstrings", "Adductors", "Abductors"]
+        "muscles": ["Quads", "Glutes", "Hamstrings", "Adductors", "Abductors"],
+        "equipment": ["Body Weight", "Assisted", "Band", "Barbell", "Cable"," Dumbbell", "Stability Ball", "Rope", "Kettlebell", "Leverage Machine", "Resistance Band", "Roller", "Sled Machine", "Smith Machine", "Bosu Ball", "Tire", "Trap Bar", "Weighted"]
     },
     {
         "bodyPart": "Lower Legs",

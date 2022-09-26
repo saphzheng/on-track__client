@@ -42,10 +42,10 @@ const BodyPartDetails = () => {
         setEquipment("default");
     }
 
-    const test = [];
-    exerciseList.forEach(exercise => test.push(exercise.equipment));
-    const uniqueTargets = [...new Set(test)];
-    console.log(uniqueTargets)
+    // const test = [];
+    // exerciseList.forEach(exercise => test.push(exercise.equipment));
+    // const uniqueTargets = [...new Set(test)];
+    // console.log(uniqueTargets)
 
     return (
         <>
@@ -67,8 +67,8 @@ const BodyPartDetails = () => {
                         })}
                     </select>
                 </label>
-                {/* <label className="bodypart-details__label" htmlFor="equipment">Equipment:
-                    <select className="bodypart-details__dropdown" name="equipment" id="equipment" 
+                <label className="bodypart-details__label" htmlFor="equipment">Equipment:
+                    <select className="dropdown bodypart-details__dropdown" name="equipment" id="equipment" 
                         value={equipment} onChange={e => setEquipment(e.target.value)}>
                         <option value="default" hidden disabled>Select</option>
                         {filters.find(filter => filter.bodyPart === bodyPart).equipment.map(equip => {
@@ -77,7 +77,7 @@ const BodyPartDetails = () => {
                             );
                         })}
                     </select>
-                </label> */}
+                </label>
                 <button className="bodypart-details__button" onClick={handleClear}>Clear</button>
             </div>
             <ExerciseCardContainer exerciseList={exerciseList} totalPages={totalPages} />

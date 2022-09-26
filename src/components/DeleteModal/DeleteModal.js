@@ -40,8 +40,8 @@ const DeleteModal = ({ open, setOpen, exerciseToDelete }) => {
                     <h2 className="delete-modal__title">Delete {exerciseToDelete.exerciseName} from {exerciseDate.toDateString()}?</h2>
                     <p className="delete-modal__info">Once you remove {exerciseToDelete.exerciseName} from the workout, this action cannot be undone.</p>
                     <div className="delete-modal__buttons">
-                        <button className="secondary-button delete-modal__button--cancel" onClick={() => setOpen(false)}>Cancel</button>
-                        <button className="primary-button delete-modal__button--delete" onClick={handleConfirm}>Delete</button>
+                        <button className="secondary-button" onClick={() => setOpen(false)}>Cancel</button>
+                        <button className="delete-button" onClick={handleConfirm}>Delete</button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,10 @@
+@use '../../styles/utilities' as *;
+
+.rbh-wrapper {
+    width: 20rem;
+    padding: 4rem;
+}
+
+.rbh polygon:hover { 
+    fill: $border-color !important; 
+}

@@ -25,7 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      {isAuthenticated ? <Header /> : null}
       <main className="main">
         {isAuthenticated ? <Sidebar /> : null}
         <Routes>

@@ -21,7 +21,7 @@
 }
 
 .delete-modal {
-    display: flex;
+    @include flex-contents();
     flex-direction: column;
     position: fixed;
     top: 40%;
@@ -48,10 +48,8 @@
        flex-direction: column;
     }
 
-    &__gif {
-        max-width: 10rem;
-        margin-right: 2rem;
-        box-shadow: 0 0 5px 5px $primary-text-color;
+    &__info {
+        margin-bottom: 1rem;
     }
 
     &__title {
@@ -59,65 +57,15 @@
         font-weight: 600;
     }
 
-    &__detail {
-        border-bottom: 1px solid $secondary-brand-color; 
+    &__buttons {
+        @include flex-contents();
     }
 
     &__button {
-        &--add {
-            margin-top: 0.5rem;
-        }
-
-        &--submit {
-            width: 5rem;
-            margin-left: auto;
-        }
-
         &--close {
             margin: 1rem 0;
             width: 100%;
         }
-
-        &--delete {
-            color: $error-color;
-        }
-    }
-
-    &__form {
-        @include flex-contents(flex-start, center);
-        max-height: 0;
-        overflow: hidden;
-        margin-top: 1.5rem;
-        transition: max-height 0.5s;
-
-        &--open {
-            max-height: 10rem;
-            transition: max-height 0.5s ease-out;
-        }
-    }
-
-    &__label {
-        @include flex-contents(flex-start, center);
-        margin-right: 0.5rem;
-        color: $secondary-brand-color;
-        font-weight: 500;
-
-        &:not(:first-child) {
-            margin-left: 1.5rem;
-        }
-    }
-
-    &__input {
-        width: 3rem;
-        text-align: right;
-
-        &:nth-child(7){
-            margin-right: 2rem;
-        }
-    }
-
-    &__units {
-        margin-left: 0.25rem;
     }
 }
 

@@ -7,7 +7,7 @@
     color: $secondary-text-color;
 
     &__content {
-        @include flex-contents();
+        @include flex-contents(flex-start);
     }
     
     &__logo {

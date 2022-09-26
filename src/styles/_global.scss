@@ -12,9 +12,10 @@ body {
 }
 
 %page-container {
-  background-image: url('../assets/images/image.jpg');
-  background-position: center;
-  background-size: cover;
+  // background-image: url('../assets/images/image.jpg');
+  // background-position: center;
+  // background-size: cover;
+  background-color: #000;
   width: 100%;
 }
 
@@ -68,6 +69,11 @@ body {
   z-index: 100;
   min-width: 2rem;
   cursor: pointer;
+}
+
+.delete-button {
+  @extend .primary-button;
+  background-color: $error-color;
 }
 
 .form-field {

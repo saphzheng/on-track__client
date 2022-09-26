@@ -1,42 +1,44 @@
 [
     {
         "name": "Shoulders",
-        "image": ""
+        "highlight": ["back-deltoids", "front-deltoids"]
     },
     {
         "name": "Chest",
-        "image": ""
+        "highlight": ["chest"]
     },
     {
         "name": "Back",
-        "image": ""
+        "highlight": ["lower-back", "upper-back", "trapezius"]
     },
     {
         "name": "Upper Arms",
-        "image": ""
+        "highlight": ["triceps", "biceps"]
     },
     {
         "name": "Lower Arms",
-        "image": ""
+        "highlight": ["forearm"]
     },
     {
         "name": "Upper Legs",
-        "image": ""
+        "highlight": ["adductor", "abductors", "quadriceps", "hamstring", "gluteal"]
     },
     {
         "name": "Lower Legs",
-        "image": ""
+        "highlight": ["knees", "calves", "left-soleus", "right-soleus"]
     },
     {
         "name": "Waist",
-        "image": ""
+        "highlight": ["abs", "obliques"]
     }, 
     {
         "name": "Cardio",
-        "image": ""
+        "highlight": ["back-deltoids", "front-deltoids", "chest", "head", "adductor", "abductors", 
+            "quadriceps", "hamstring", "gluteal", "knees", "calves", "left-soleus", "right-soleus",
+            "abs", "obliques", "forearm", "biceps", "triceps", "neck", "lower-back", "upper-back", "trapezius"]
     },
     {
         "name": "Neck",
-        "image": ""
+        "highlight": [ "neck"]
     }
 ]

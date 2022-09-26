@@ -14,7 +14,7 @@
     }
 
     &__filters {
-        @include flex-contents(flex-start);
+        @include flex-contents(flex-start, flex-end);
         cursor: pointer;
         max-height: 0;
         overflow: hidden;
@@ -22,6 +22,8 @@
         background-color: $border-color;
         opacity: 0.9;
         margin: 0 2rem 1rem;
+        // padding: 1rem;
+        // padding-bottom: 0;
         border-radius: 2px;
 
         &--open {
@@ -34,15 +36,15 @@
         @include flex-contents(flex-start, flex-start);
         flex-direction: column;
         color: $non-focus-color;
-        margin: 0.5rem 2rem 0 1rem;
+        margin: 1rem 2rem 0 1rem;
     }
 
     &__button {
         background-color: $non-focus-color;
+        color: $border-color;
         border-radius: 2px;
         padding: 0 1rem;
-        margin-left: auto;
-        margin-right: 1rem;
+        margin: 0 1rem 1rem auto;
     }
 
     &__dropdown {

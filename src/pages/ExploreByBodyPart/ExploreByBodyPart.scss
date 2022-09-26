@@ -1,11 +1,31 @@
 @use '../../styles/global';
+@use '../../styles/mixins' as *;
 
 .explore {
     @extend %page-container;
+    
+    &__content {
+        @include flex-contents();
+    }
 
     &__cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
+    }
+}
+
+.explore-list {
+    @include flex-contents(space-evenly, flex-start);
+    flex-direction: column;
+
+    &__item {
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+
+        }
     }
 }
