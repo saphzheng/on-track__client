@@ -42,10 +42,10 @@ const BodyPartDetails = () => {
         setEquipment("default");
     }
 
-    // const test = [];
-    // exerciseList.forEach(exercise => test.push(exercise.equipment));
-    // const uniqueTargets = [...new Set(test)];
-    // console.log(uniqueTargets)
+    const test = [];
+    exerciseList.forEach(exercise => test.push(exercise.equipment));
+    const uniqueTargets = [...new Set(test)];
+    console.log(uniqueTargets)
 
     return (
         <>

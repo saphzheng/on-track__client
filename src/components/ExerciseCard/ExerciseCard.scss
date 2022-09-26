@@ -4,9 +4,7 @@
 .exercise-card {
     @include flex-contents(flex-start, center);
     flex-direction: column;
-    height: 13.5rem;
     background-color: $card-color;
-    // margin: 0 0.5rem 1rem;
     text-decoration: none;
     border: none;
     border-radius: 4px;

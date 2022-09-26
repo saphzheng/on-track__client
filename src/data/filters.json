@@ -1,7 +1,8 @@
 [
     {
         "bodyPart": "Waist",
-        "muscles": ["Abs"]
+        "muscles": ["Abs"],
+        "equipment": ["Band", "Barbell", "Assisted", "Cable", "Stability Ball", "Dumbbell", "Wheel Roller", "Medicine Ball", "Hammer", "Kettlebell", "Roller", "Resistance Band", "Smith Machine", "Weighted", "Leverage Machine"]
     },
     {
         "bodyPart": "Upper Legs",
@@ -9,15 +10,18 @@
     },
     {
         "bodyPart": "Lower Legs",
-        "muscles": ["Calves"]
+        "muscles": ["Calves"],
+        "equipment": ["Body Weight", "Assisted", "Band", "Barbell", "Cable", "Rope", "Dumbbell", "Sled Machine", "Leverage Machine", "Smith Machine", "Weighted"]
     },
     {
         "bodyPart": "Chest",
-        "muscles": ["Pectorals", "Serratus Anterior"]
+        "muscles": ["Pectorals", "Serratus Anterior"],
+        "equipment": ["Band", "Barbell", "Assisted", "Cable", "Stability Ball", "Dumbbell", "EZ Barbell", "Medicine Ball", "Bosu Ball", "Kettlebell", "Roller", "Resistance Band", "Smith Machine", "Weighted", "Leverage Machine"]
     },
     {
         "bodyPart": "Back",
-        "muscles": ["Lats", "Spine", "Upper Back", "Traps"]
+        "muscles": ["Lats", "Spine", "Upper Back", "Traps"],
+        "equipment": ["Cable", "Body Weight", "Leverage Machine", "Stability Ball", "Band", "Barbell", "Dumbbell", "EZ Barbell", "Kettlebell", "Rope", "Medicine Ball", "Resistance Band", "Roller", "Smith Machine", "Weighted"]
     },
     {
         "bodyPart": "Upper Arms",
@@ -25,19 +29,23 @@
         "equipment": ["Assisted", "Leverage Machine", "Band", "Barbell", "Body Weight", "Cable", "Dumbbell", "Stability Ball", "EZ Barbell", "Kettlebell", "Medicine Ball", "Olympic Barbell", "Resistance Band", "Skierg Machine", "Smith Machine", "Weighted"]
     },
     {
-        "bodyPart": "Lower",
-        "muscles": ["Forearms"]
+        "bodyPart": "Lower Arms",
+        "muscles": ["Forearms"],
+        "equipment": ["Band", "Barbell", "Cable", "Dumbbell", "Kettlebell", "Leverage Machine", "Body Weight", "Smith Machine", "Weighted"]
     },
     {
         "bodyPart": "Cardio",
-        "muscles": ["Cardiovascular System"]
+        "muscles": ["Cardiovascular System"],
+        "equipment": ["Stationary Bike", "Elliptical Machine", "Stepmill Machine", "Dumbbell", "Body Weight", "Leverage Machine", "Rope"]
     },
     {
         "bodyPart": "Shoulders",
-        "muscles": ["Delts"]
+        "muscles": ["Delts"],
+        "equipment": ["Band", "Barbell", "Rope", "Cable", "Dumbbell", "EZ Barbell", "Kettlebell", "Body Weight", "Leverage Machine", "Resistance Band", "Smith Machine", "Weighted"]
     },
     {
         "bodyPart": "Neck",
-        "muscles": ["Levator Scapulae"]
+        "muscles": ["Levator Scapulae"],
+        "equipment": ["Body Weight"]
     }
 ]
