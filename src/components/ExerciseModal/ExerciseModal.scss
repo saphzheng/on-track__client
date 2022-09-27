@@ -137,7 +137,7 @@
     &__form {
         @include flex-contents(flex-start, center);
         font-size: 0.9rem;
-        max-width: 21.5rem;
+        // max-width: 21.5rem;
         flex-wrap: wrap;
         margin-top: 0.75rem;
         transition: max-height 0.5s;

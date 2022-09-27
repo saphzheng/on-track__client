@@ -26,7 +26,7 @@ const BodyPartDetails = () => {
     async function getBodyPartExercises() {
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.get(`${API_URL}/${bodyPart.toLowerCase()}`, {
+            const response = await axios.get(`${API_URL}/exercise/${bodyPart.toLowerCase()}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
