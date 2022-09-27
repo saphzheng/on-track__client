@@ -44,8 +44,7 @@ const HomePage = () => {
     async function getWorkoutData() {
         try {
             const token = await getAccessTokenSilently();
-            console.log(API_URL)
-
+            console.log(token)
             const response = await axios.get(`${API_URL}/exerciseLog/?user=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
