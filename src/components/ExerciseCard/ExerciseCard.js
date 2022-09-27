@@ -5,7 +5,7 @@ const ExerciseCard = ({ exercise, handleClick }) => {
 
     return (
         <div className="exercise-card" onClick={() => handleClick(exercise)}>
-            <img className="exercise-card__gif" src={exercise.gifUrl}/>
+            <img className="exercise-card__gif" src={exercise.gifUrl} alt={exerciseName} />
             <span className="exercise-card__name">{exerciseName}</span>
         </div>
     );

@@ -44,13 +44,13 @@ const WorkoutDetails = () => {
         <section className="workout-details">
             <i className="back-button bi-chevron-left" onClick={() => navigate("/workouts")}></i>
             <h1 className="page-title">{currentDate.toDateString()}</h1>
-            {workoutData && workoutData.length === 0 ? null :
+            {workoutData && workoutData.length !== 0 ?
             <ul className="workout-details__header">
                 <li className="workout-details__label workout-details__label--exercise">Exercise Name</li>
                 <li className="workout-details__label workout-details__label--weight">Weight</li>
                 <li className="workout-details__label">Sets</li>
                 <li className="workout-details__label">Reps</li>
-            </ul>}
+            </ul> : null}
             {workoutData && workoutData.length !== 0 ?
             <ul className="workout-list">
                 {workoutData.map(exercise => {
