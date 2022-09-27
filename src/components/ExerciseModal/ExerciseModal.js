@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const ExerciseModal = ({ open, setOpen, exercise }) => {
     const navigate = useNavigate();
     const { getAccessTokenSilently, user } = useAuth0();
@@ -43,7 +45,7 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                 "date": format(new Date(), "LL-dd-yyyy"),
                 "user": user.email
             };
-            const response = await axios.post(`http://localhost:8080/exerciseLog`, body, {
+            const response = await axios.post(`${API_URL}/exerciseLog`, body, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }

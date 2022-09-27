@@ -6,6 +6,8 @@ import { Line, Bar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HomePage = () => {
     Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
     Chart.defaults.color = "#000";
@@ -42,13 +44,13 @@ const HomePage = () => {
     async function getWorkoutData() {
         try {
             const token = await getAccessTokenSilently();
-            console.log(user)
-            const response = await axios.get(`http://localhost:8080/exerciseLog/?user=${user?.email}`, {
+            console.log(API_URL)
+
+            const response = await axios.get(`${API_URL}/exerciseLog/?user=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
             if (newUser && response.data.length !== 0) {
                 setNewUser(false);
             }

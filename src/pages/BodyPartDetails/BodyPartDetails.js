@@ -7,6 +7,8 @@ import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import ExerciseCardContainer from '../../components/ExerciseCardContainer/ExerciseCardContainer';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const BodyPartDetails = () => {
     const navigate = useNavigate();
     const { getAccessTokenSilently } = useAuth0();
@@ -24,12 +26,11 @@ const BodyPartDetails = () => {
     async function getBodyPartExercises() {
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.get(`http://localhost:8080/exercise/${bodyPart.toLowerCase()}`, {
+            const response = await axios.get(`${API_URL}/${bodyPart.toLowerCase()}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
             setExerciseList(response.data);
             setTotalPages(Math.ceil(response.data.length / 20));
         } catch (error) {

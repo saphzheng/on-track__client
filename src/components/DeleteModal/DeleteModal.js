@@ -1,8 +1,8 @@
 import './DeleteModal.scss';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useState } from 'react';
-import { format } from 'date-fns';
 import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const DeleteModal = ({ open, setOpen, exerciseToDelete }) => {
     const { getAccessTokenSilently, user } = useAuth0();
@@ -18,7 +18,7 @@ const DeleteModal = ({ open, setOpen, exerciseToDelete }) => {
 
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.delete(`http://localhost:8080/exerciseLog/${exerciseToDelete.id}`, {
+            const response = await axios.delete(`${API_URL}/exerciseLog/${exerciseToDelete.id}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }

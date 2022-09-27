@@ -4,21 +4,22 @@ import { useState } from 'react';
 import axios from 'axios';
 import ExerciseCardContainer from '../../components/ExerciseCardContainer/ExerciseCardContainer';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const ExploreBySearch = () => {
     const { getAccessTokenSilently } = useAuth0();
     const [ query, setQuery ] = useState("");
     const [ totalPages, setTotalPages ] = useState();
     const [ exerciseList, setExerciseList ] = useState();
-    
+
     async function handleSearch () {
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.get(`http://localhost:8080/exercise/search/${query}`, {
+            const response = await axios.get(`${API_URL}/exercise/search/${query}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
             setExerciseList(response.data);
             setTotalPages(Math.ceil(response.data.length / 20));
         } catch (error) {

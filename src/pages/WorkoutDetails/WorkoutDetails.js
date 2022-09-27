@@ -6,6 +6,8 @@ import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const WorkoutDetails = () => {
     const navigate = useNavigate();
     const { date } = useParams();
@@ -22,12 +24,11 @@ const WorkoutDetails = () => {
     async function getWorkoutSession() {
         try {
             const token = await getAccessTokenSilently();
-            const response = await axios.get(`http://localhost:8080/exerciseLog/${date}/?user=${user?.email}`, {
+            const response = await axios.get(`${API_URL}/exerciseLog/${date}/?user=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
             });
-            // console.log(response.data);
             setWorkoutData(response.data);
         } catch (error) {
             console.log(error.message);
