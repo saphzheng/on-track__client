@@ -1,25 +1,27 @@
 import './ExploreByBodyPart.scss';
 import { v4 as uuid } from 'uuid';
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import bodyParts from '../../data/bodyParts.json';
 import BodyPartHighlighter from '../../components/BodyPartHighlighter/BodyPartHighlighter';
 
 const ExploreByBodyPart = () => {
+    const navigate = useNavigate();
     const [ bodyPart, setBodyPart ] = useState("");
-
-
 
     return (
         <section className="explore">
             <h1 className="page-title">Explore Exercises</h1>
-            {/* <div className="explore__cards">
-                {bodyParts.map(bodyPart => <BodyPartCard key={uuid()} bodyPart={bodyPart} />)}
-            </div> */}
-            
             <div className="explore__content">
                 <ul className="explore-list">
-                    {bodyParts.map(bodyPart => 
-                        <li key={uuid()} className="explore-list__item" onMouseOver={() => setBodyPart(bodyPart)}>{bodyPart.name}</li>)}
+                    {bodyParts.map(bodyPart => {
+                        return (
+                            <>
+                            <li key={uuid()} className="explore-list__item" onMouseOver={() => setBodyPart(bodyPart)} 
+                                onClick={() => navigate(`/explore/category/${bodyPart.name}`)}>{bodyPart.name}</li>
+                            <i className="explore-list__arrow bi-chevron-right"></i>
+                            </>
+                        )})}
                 </ul>
                 <BodyPartHighlighter bodyPart={bodyPart} />
             </div>

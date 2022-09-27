@@ -48,7 +48,6 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                     authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data);
             setMessage("Added Successfully!");
             setSubmit(true);
         } catch (error) {
@@ -71,16 +70,17 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                             <p className="exercise-modal__info">Target Muscle: <span className="exercise-modal__detail">{titleCase(exercise.target)}</span></p>
                             <p className="exercise-modal__info">Requires: <span className="exercise-modal__detail">{titleCase(exercise.equipment)}</span></p>
                             <button className={`primary-button exercise-modal__button--add ${openForm? "primary-button--disabled" : ""}`} onClick={() => setOpenForm(!openForm)}>Add To Today's Workout</button>
+                            <span className="exercise-modal__add">Add To Today's Workout:</span>
                         </div>
                     </div>
                     <form className={`exercise-modal__form ${openForm? "exercise-modal__form--open" : ""}`} onSubmit={handleSubmit}>
-                        <label className="exercise-modal__label" htmlFor="weight">Weight:</label>
-                        <input className="form-field exercise-modal__input" type="number" name="weight" id="weight"></input>
+                        <label className="exercise-modal__label" htmlFor="weight">Weight: 
+                        <input className="form-field exercise-modal__input" type="number" name="weight" id="weight"></input></label>
                         <span className="exercise-modal__units">lbs</span>
-                        <label className="exercise-modal__label" htmlFor="sets">Sets:</label>
-                        <input className="form-field exercise-modal__input" type="number" name="sets" id="sets"></input>
-                        <label className="exercise-modal__label" htmlFor="reps">Reps:</label>
-                        <input className="form-field exercise-modal__input" type="number" name="reps" id="reps"></input>
+                        <label className="exercise-modal__label" htmlFor="sets">Sets: 
+                        <input className="form-field exercise-modal__input" type="number" name="sets" id="sets"></input></label>
+                        <label className="exercise-modal__label" htmlFor="reps">Reps: 
+                        <input className="form-field exercise-modal__input" type="number" name="reps" id="reps"></input></label>
                         <button className="primary-button exercise-modal__button--submit">Submit</button>
                     </form>
                 </div>

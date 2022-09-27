@@ -1,8 +1,14 @@
 @use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
 
 .rbh-wrapper {
-    width: 20rem;
-    padding: 4rem;
+    display: none;
+    width: 12rem;
+    padding: 1rem;
+
+    @include tablet {
+        @include flex-contents();
+    }
 }
 
 .rbh polygon:hover { 

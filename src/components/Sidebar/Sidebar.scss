@@ -1,9 +1,27 @@
 @use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
 
 .sidebar {
+    display: none;
     background-color: $sidebar-bg-color;
-    width: 12rem;
     min-height: calc(100vh - 80px);
-    align-self: stretch;
-    flex-shrink: 0;
+
+    &--open {
+        display: block;
+        position: absolute;
+        top: 3.48rem;
+        bottom: 0;
+        left: 0;
+        right: 30%;
+        z-index: 100;
+        transition: 1s;
+        min-height: 100vh;
+    }
+
+    @include tablet {
+        display: block;
+        width: 12rem;
+        align-self: stretch;
+        flex-shrink: 0;
+    }
 }

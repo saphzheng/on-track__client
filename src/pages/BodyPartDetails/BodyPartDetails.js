@@ -17,6 +17,10 @@ const BodyPartDetails = () => {
     const [ equipment, setEquipment ] = useState("default");
     const [ totalPages, setTotalPages ] = useState(1);
 
+    useEffect(() => {
+        getBodyPartExercises();
+    }, []);
+
     async function getBodyPartExercises() {
         try {
             const token = await getAccessTokenSilently();
@@ -32,20 +36,11 @@ const BodyPartDetails = () => {
             console.log(error.message);
         }
     }
-
-    useEffect(() => {
-        getBodyPartExercises();
-    }, []);
-
+    
     const handleClear = () => {
         setTarget("default");
         setEquipment("default");
     }
-
-    // const test = [];
-    // exerciseList.forEach(exercise => test.push(exercise.equipment));
-    // const uniqueTargets = [...new Set(test)];
-    // console.log(uniqueTargets)
 
     return (
         <>
@@ -55,29 +50,34 @@ const BodyPartDetails = () => {
             <i className="bodypart-details__filter-btn bi-filter" onClick={() => setOpenFilter(!openFilter)}>Filter By</i>
             {/* filter by dropdown menu */}
             <div className={`bodypart-details__filters ${openFilter ? "bodypart-details__filters--open" : ""}`}>
-                <label className="bodypart-details__label" htmlFor="target">Target Muscle:
-                    <select className="dropdown bodypart-details__dropdown" name="target" id="target" 
-                        value={target} onChange={e => setTarget(e.target.value)}>
-                        <option value="default" hidden disabled>Select</option>
-                        {filters.find(filter => filter.bodyPart === bodyPart).muscles &&
-                        filters.find(filter => filter.bodyPart === bodyPart).muscles.map(muscle => {
-                            return (
-                                <option key={uuid()} value={muscle}>{muscle}</option>
-                            );
-                        })}
-                    </select>
-                </label>
-                <label className="bodypart-details__label" htmlFor="equipment">Equipment:
-                    <select className="dropdown bodypart-details__dropdown" name="equipment" id="equipment" 
-                        value={equipment} onChange={e => setEquipment(e.target.value)}>
-                        <option value="default" hidden disabled>Select</option>
-                        {filters.find(filter => filter.bodyPart === bodyPart).equipment.map(equip => {
-                            return (
-                                <option value={equip}>{equip}</option>
-                            );
-                        })}
-                    </select>
-                </label>
+                <div className="bodypart-details__dropdowns">
+                    <div className="bodypart-details__filter">
+                        <label className="bodypart-details__label" htmlFor="target">Target Muscle:</label>
+                        <select className="dropdown bodypart-details__dropdown" name="target" id="target" 
+                            value={target} onChange={e => setTarget(e.target.value)}>
+                            <option value="default" hidden disabled>{window.screen.width < 768 ? "Target" : "Select"}</option>
+                            {filters.find(filter => filter.bodyPart === bodyPart).muscles &&
+                            filters.find(filter => filter.bodyPart === bodyPart).muscles.map(muscle => {
+                                return (
+                                    <option key={uuid()} value={muscle}>{muscle}</option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                    <div className="bodypart-details__filter">
+                        <label className="bodypart-details__label" htmlFor="equipment">Equipment:</label>
+                        <select className="dropdown bodypart-details__dropdown" name="equipment" id="equipment" 
+                            value={equipment} onChange={e => setEquipment(e.target.value)}>
+                                {console.log(window.screen.width)}
+                            <option value="default" hidden disabled>{window.screen.width < 768 ? "Equipment" : "Select"}</option>
+                            {filters.find(filter => filter.bodyPart === bodyPart).equipment.map(equip => {
+                                return (
+                                    <option value={equip}>{equip}</option>
+                                );
+                            })}
+                        </select>
+                    </div>
+                </div>
                 <button className="bodypart-details__button" onClick={handleClear}>Clear</button>
             </div>
             <ExerciseCardContainer exerciseList={exerciseList} totalPages={totalPages} />

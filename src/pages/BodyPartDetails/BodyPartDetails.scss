@@ -9,22 +9,28 @@
 
     &__filter-btn {
         position: relative;
-        left: 2.5rem;
-        top: -0.5rem;
+        top: 0.5rem;
+
+        @include tablet {
+            left: 2rem;
+        }
     }
 
     &__filters {
-        @include flex-contents(flex-start, flex-end);
+        @include flex-contents(flex-start, flex-start);
         cursor: pointer;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease-out;
         background-color: $border-color;
         opacity: 0.9;
-        margin: 0 2rem 1rem;
-        // padding: 1rem;
-        // padding-bottom: 0;
+        margin: 1rem;
         border-radius: 2px;
+
+        @include tablet {
+            @include flex-contents(flex-start, flex-end);
+            margin: 1rem 1.5rem 1rem;
+        }
 
         &--open {
             max-height: 10rem;
@@ -32,23 +38,52 @@
         }
     }
 
+    &__filter {
+        @include tablet {
+            margin-right: 2rem;
+        }
+    }
+    
     &__label {
-        @include flex-contents(flex-start, flex-start);
-        flex-direction: column;
+        display: none;
         color: $non-focus-color;
-        margin: 1rem 2rem 0 1rem;
+
+        @include tablet {
+            @include flex-contents(flex-start, flex-start);
+            flex-direction: column;
+        }
     }
 
     &__button {
         background-color: $non-focus-color;
         color: $border-color;
         border-radius: 2px;
-        padding: 0 1rem;
-        margin: 0 1rem 1rem auto;
+        padding: 0 0.5rem;
+        margin: 1.2rem 1rem 2rem auto;
+
+        @include tablet {
+            margin: 0 1rem 2rem auto;
+            padding: 0 1rem;
+        }
+    }
+
+    &__dropdowns {
+        @include flex-contents(flex-start, flex-start);
+        flex-direction: column;
+        margin: 1rem;
+
+        @include tablet {
+            flex-direction: row;
+        }
     }
 
     &__dropdown {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         margin-top: 0.25rem;
+
+        @include tablet {
+            @include flex-contents();
+            flex-direction: column;
+        }
     }
 }

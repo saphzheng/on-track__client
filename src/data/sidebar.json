@@ -9,12 +9,12 @@
         "icon": "bi-person",
         "children": [
             {
-                "title": "Today",
+                "title": "Today's Workout",
                 "path": "/workouts/today"
             },
             {
                 "title": "Overview",
-                "path": "/workouts"
+                "path": "/workouts/overview"
             }
         ]
     },
@@ -23,7 +23,7 @@
         "icon": "bi-search",
         "children": [
             {
-                "title": "By Body Part",
+                "title": "By Category",
                 "path": "/explore/category"
             },
             {

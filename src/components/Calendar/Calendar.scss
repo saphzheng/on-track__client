@@ -1,5 +1,11 @@
 @use '../../styles/utilities' as *;
+@use '../../styles/mixins' as *;
 
 .calendar {
     background-color: $visual-bg-color;
+    width: 18rem;
+
+    @include tablet {
+        width: 50vw;
+    }
 }

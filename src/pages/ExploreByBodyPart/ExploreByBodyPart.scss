@@ -1,31 +1,70 @@
 @use '../../styles/global';
 @use '../../styles/mixins' as *;
+@use '../../styles/utilities' as *;
 
 .explore {
     @extend %page-container;
     
     &__content {
-        @include flex-contents();
-    }
+        margin-top: 1.5rem;
+        width: 100%;
 
-    &__cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        @include tablet {
+            @include flex-contents();
+        }
     }
 }
 
 .explore-list {
     @include flex-contents(space-evenly, flex-start);
     flex-direction: column;
+    width: 100%;
+
+    @include tablet {
+        width: 10rem;
+    }
 
     &__item {
-        margin-bottom: 0.5rem;
+        background-color: $card-color;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        color: $secondary-text-color;
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: -1rem;
+        font-weight: 500;
         cursor: pointer;
 
-        &:hover {
-            transform: scale(1.1);
+        @include tablet {
+            background-color: $secondary-text-color;
+            color: $primary-text-color;
+            border: none;
+            margin-bottom: -0.5rem;
+        }
 
+        &:hover {
+            background-color: $non-focus-color;
+
+            @include tablet {
+                transform: scale(1.1);
+                text-shadow: 0px 0px 15px $primary-text-color;
+                background-color: $secondary-text-color;
+                text-decoration: underline;
+                text-decoration-color: $primary-brand-color;
+                text-underline-offset: 0.4rem;
+            }
+        }
+    }
+
+    &__arrow {
+        color: $secondary-text-color;
+        position: relative;
+        top: -1rem;
+        right: 0.5rem;
+        margin-left: auto;
+
+        @include tablet {
+            display: none;
         }
     }
 }

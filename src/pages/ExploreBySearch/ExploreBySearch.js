@@ -36,7 +36,7 @@ const ExploreBySearch = () => {
             </div>
             {exerciseList ? 
                 <ExerciseCardContainer exerciseList={exerciseList} totalPages={totalPages} /> :
-                <span className="search__instructions">Enter a keyword, body part, muscle, or equipment.</span>}
+                <span className="search__instructions">Enter a keyword from an exercise, body part, muscle, or equipment.</span>}
         </section>
         </>
     );

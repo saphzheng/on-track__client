@@ -9,7 +9,7 @@
 
     &__cta {
         @include flex-contents();
-        margin-bottom: 2rem;
+        margin: 2rem 0;
     }
 
     &__input {

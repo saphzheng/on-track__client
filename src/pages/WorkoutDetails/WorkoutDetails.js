@@ -46,7 +46,7 @@ const WorkoutDetails = () => {
             {workoutData && workoutData.length === 0 ? null :
             <ul className="workout-details__header">
                 <li className="workout-details__label workout-details__label--exercise">Exercise Name</li>
-                <li className="workout-details__label">Weight</li>
+                <li className="workout-details__label workout-details__label--weight">Weight</li>
                 <li className="workout-details__label">Sets</li>
                 <li className="workout-details__label">Reps</li>
             </ul>}
@@ -54,17 +54,32 @@ const WorkoutDetails = () => {
             <ul className="workout-list">
                 {workoutData.map(exercise => {
                     return (
-                        <li key={uuid()} className="workout-list__entry">
-                            <span className="workout-list__value workout-list__value--exercise">{exercise.exerciseName}</span>
+                        <>
+                        <li key={uuid()} className="workout-list__entry workout-list__entry--table">
+                            <span className="workout-list__name">{exercise.exerciseName}</span>
                             <span className="workout-list__value">{exercise.weight}</span>
                             <span className="workout-list__value">{exercise.sets}</span>
                             <span className="workout-list__value">{exercise.reps}</span>
                             <i className="workout-list__delete bi-trash3-fill" onClick={() => handleDelete(exercise)}></i>
                         </li>
-                    )
+                        <li key={uuid()} className="workout-list__entry workout-list__entry--condensed">
+                            <span className="workout-list__name">{exercise.exerciseName}</span>
+                            <div className="workout-list__stats"> 
+                                <div className="workout-list__stat-column">
+                                    <span className="workout-list__descriptor">Sets: <span className="workout-list__value">{exercise.sets}</span></span>
+                                    <span className="workout-list__descriptor">Reps: <span className="workout-list__value">{exercise.reps}</span></span>
+                                </div>
+                                <div className="workout-list__stat-column">
+                                    <span className="workout-list__descriptor">Weight: <span className="workout-list__value">{exercise.weight}</span></span>
+                                    <i className="workout-list__delete bi-trash3-fill" onClick={() => handleDelete(exercise)}></i>
+                                </div>
+                            </div>
+                        </li>
+                        </>
+                    );
                 })}
             </ul> :
-            <span className="workout-details__message">No workouts recorded for this day.</span>}
+            <p className="workout-details__message">No workouts recorded for this day.</p>}
             {workoutData && workoutData.length !== 0 ? <i className="workout-details__add bi-plus-square" onClick={() => navigate("/explore/category")}> Add Exercise</i> : null }
             <DeleteModal open={open} setOpen={setOpen} exerciseToDelete={exerciseToDelete} />
         </section>

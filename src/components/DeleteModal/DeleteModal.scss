@@ -24,17 +24,25 @@
     @include flex-contents();
     flex-direction: column;
     position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-    width: auto;
-    min-width: 20rem;
-    padding: 2rem 3.5rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
+    padding: 2rem 3.5rem;
     background-color: $card-color;
     color: $secondary-text-color;
-    border-radius: 8px;
-    animation: grow 0.2s ease-out;
+
+    @include tablet {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        width: auto;
+        min-width: 20rem;
+        border-radius: 8px;
+        animation: grow 0.2s ease-out;
+        height: fit-content;
+    }
     
     &__close {
         position: absolute;
