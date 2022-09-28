@@ -93,7 +93,7 @@ const HomePage = () => {
             plottedExercise2 = Object.keys(workoutCount).find(key => workoutCount[key] === secondMax);
             setSelectedName2(plottedExercise2);
         } else {
-            plottedExercise1 = selectedName1;
+            plottedExercise1 = "Barbell Drag Curl";
             plottedExercise2 = selectedName2;
         }
         // console.log(mainWorkout);
