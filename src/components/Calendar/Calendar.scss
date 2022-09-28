@@ -2,8 +2,11 @@
 @use '../../styles/mixins' as *;
 
 .calendar {
-    background-color: $visual-bg-color;
+    background-color: $modal-color;
+    color: $secondary-text-color;
     width: 18rem;
+    border-radius: 4px;
+    box-shadow: -1px 1px 2px 2px $header-sidebar-color;
 
     @include tablet {
         width: 50vw;

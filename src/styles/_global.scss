@@ -16,7 +16,7 @@ body {
   // background-image: url('../assets/images/image.jpg');
   // background-position: center;
   // background-size: cover;
-  background-color: #000;
+  background-color: $main-bg-color;
   width: 100%;
   min-height: 100vh;
   padding: 1rem;
@@ -24,14 +24,22 @@ body {
 
 .page-title {
   font-size: 2rem;
-  font-weight: 700;  
+  font-weight: 600;  
   color: $primary-text-color;
-  // background-image: linear-gradient(to right, black 10%, rgba(206, 206, 206, 0.678));
-  opacity: 0.8;
+  width: fit-content;
+  // border-bottom: 1px solid $primary-brand-color;
+  // border-image: linear-gradient(to right, $primary-brand-color, $main-bg-color) 30;
 
   @include tablet {
-    margin-left: 1rem;
-    margin-top: 0.5rem;
+    margin: 0.5rem 1rem 0.25rem;
+  }
+}
+
+.page-subtitle {
+  color: $non-focus-color;
+
+  @include tablet {
+    margin: 0 0 1rem 1rem;
   }
 }
 
@@ -41,8 +49,8 @@ body {
   border-radius: 10px;
   cursor: pointer;
   padding: 0 1rem;
-  background-color: $secondary-brand-color;
-  color: $primary-text-color;
+  background-color: $primary-brand-color;
+  color: $secondary-text-color;
   border: none;
   
   @include tablet {
@@ -52,10 +60,12 @@ body {
 
   &:hover {
     background-color: $border-color;
+    color: $primary-text-color;
   }
 
   &--disabled {
     background-color: $border-color;
+    color: $primary-text-color;
   }
 }
 
@@ -69,7 +79,7 @@ body {
   &:hover {
     color: $secondary-brand-color;
     background-color: $primary-text-color;
-    border: 1px solid $secondary-brand-color
+    border: 1px solid $secondary-brand-color;
   }
 }
 
@@ -88,16 +98,12 @@ body {
 .delete-button {
   @extend .primary-button;
   background-color: $error-color;
+  color: $primary-text-color;
 }
 
 .form-field {
-  height: 1.25rem;
-  // border-radius: 5px;
   border: 1px solid $border-color;
-
-  @include tablet {
-    height: 1.5rem;
-  }
+  height: 1.5rem;
 
   &::placeholder {
     color: $border-color;
@@ -117,4 +123,28 @@ body {
   color: $border-color;
   border-radius: 2px;
   border: none;
+}
+
+.list-entry {
+  color: $secondary-text-color;
+  opacity: 0.8;
+  border-bottom: 1px solid $border-color;
+  padding: 1rem;
+
+  &--table {
+      display: none;
+
+      @include tablet{
+          @include flex-contents (flex-start);
+      }
+  }
+
+  &--condensed {
+      @include flex-contents (flex-start, flex-start);
+      flex-direction: column;
+
+      @include tablet{
+          display: none;
+      }
+  }
 }

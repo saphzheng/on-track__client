@@ -56,14 +56,14 @@ const WorkoutDetails = () => {
                 {workoutData.map(exercise => {
                     return (
                         <>
-                        <li key={uuid()} className="workout-list__entry workout-list__entry--table">
+                        <li key={uuid()} className="list-entry list-entry--table workout-list__entry">
                             <span className="workout-list__name">{exercise.exerciseName}</span>
                             <span className="workout-list__value">{exercise.weight}</span>
                             <span className="workout-list__value">{exercise.sets}</span>
                             <span className="workout-list__value">{exercise.reps}</span>
                             <i className="workout-list__delete bi-trash3-fill" onClick={() => handleDelete(exercise)}></i>
                         </li>
-                        <li key={uuid()} className="workout-list__entry workout-list__entry--condensed">
+                        <li key={uuid()} className="list-entry list-entry--condensed workout-list__entry">
                             <span className="workout-list__name">{exercise.exerciseName}</span>
                             <div className="workout-list__stats"> 
                                 <div className="workout-list__stat-column">
@@ -81,7 +81,7 @@ const WorkoutDetails = () => {
                 })}
             </ul> :
             <p className="workout-details__message">No workouts recorded for this day.</p>}
-            {workoutData && workoutData.length !== 0 ? <i className="workout-details__add bi-plus-square" onClick={() => navigate("/explore/category")}> Add Exercise</i> : null }
+            {workoutData && workoutData.length !== 0 ? <i className="workout-details__add bi-plus-square" onClick={() => navigate("/explore")}> Add Exercise</i> : null }
             <DeleteModal open={open} setOpen={setOpen} exerciseToDelete={exerciseToDelete} />
         </section>
     );

@@ -1,23 +1,25 @@
 // brand colors
 $primary-brand-color: #FFB300;
-$secondary-brand-color: #1945AA;
+// $secondary-brand-color: #1945AA;
+$secondary-brand-color: #1852da;
 
 // text colors
 $primary-text-color: #FFFFFF;
 $secondary-text-color: #000000;
 
 // background colors
-$sidebar-bg-color: #161616;
+$header-sidebar-color: #161616;
+$modal-color: rgba(255, 255, 255, 0.9);
+$main-bg-color: #272727;
 $visual-bg-color: rgba(255, 255, 255, 0.2);
 $text-bg-color: rgba(255, 255, 255, 0.7);
 
 // miscellaneous 
 $error-color: #EA0000;
-$active-link-color: rgba(255, 192, 82, 0.804);
+$active-link-color: #CA9F56; //(255, 192, 82, 0.804);
 $sidebar-child-color: #212121;
 $border-color: #3A3A3A;
 $sidebar-hover-color: #434343;
-$card-color: rgba(255, 255, 255, 0.9);
 $non-focus-color: #AEAEAE;
 
 // breakpoints

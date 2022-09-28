@@ -4,11 +4,11 @@
 .exercise-card {
     @include flex-contents(flex-start, center);
     flex-direction: column;
-    background-color: $card-color;
+    background-color: $primary-text-color;
     text-decoration: none;
     border: none;
     border-radius: 4px;
-    box-shadow: $secondary-text-color 2px 2px 2px;
+    box-shadow: -1px 1px 2px 2px $header-sidebar-color;
     color: $secondary-text-color;
     filter: grayscale(0.6);
     cursor: pointer;
@@ -22,16 +22,12 @@
         transition: transform 0.3s;
         filter: grayscale(0);
         color: $secondary-brand-color;
-  
-        & > img {
-            opacity: 1;
-        }
     }
   
     &__gif {
       margin: 0.5rem;
       max-width: 8rem;
-      opacity: 0.6;
+    //   opacity: 0.6;
       box-shadow: 0 0 5px 5px #FFFFFF;
     }
   

@@ -1,18 +1,30 @@
 @use '../../styles/utilities' as *;
 @use '../../styles/mixins' as *;
 
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
 .sidebar {
     display: none;
-    background-color: $sidebar-bg-color;
-    min-height: calc(100vh - 80px);
+    background-color: $header-sidebar-color;
+    min-height: 100vh;
+    border-right: 2px solid $main-bg-color;
+    position: relative;
 
     &--open {
         display: block;
         position: absolute;
-        top: 3.48rem;
+        top: 0;
         bottom: 0;
         left: 0;
-        right: 30%;
+        width: 12rem;
         z-index: 100;
         transition: 1s;
         min-height: 100vh;
@@ -20,8 +32,39 @@
 
     @include tablet {
         display: block;
-        width: 12rem;
         align-self: stretch;
         flex-shrink: 0;
+        width: 12rem;
     }
+
+    &__hamburger {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: none;
+
+        &--show {
+            display: block;
+        }
+    }
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 1.25rem;
+
+    &:hover {
+        color: $active-link-color;
+    }
+
+    &__icon {
+        margin-right: 0.5rem;
+    }
+}
+
+.logo {
+    margin: auto;
+    padding: 2rem 0;
+    width: 3rem;
 }

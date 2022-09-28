@@ -10,7 +10,8 @@
         width: 100%;
 
         @include tablet {
-            @include flex-contents();
+            @include flex-contents(flex-start);
+            margin-left: 1rem;
         }
     }
 }
@@ -19,13 +20,14 @@
     @include flex-contents(space-evenly, flex-start);
     flex-direction: column;
     width: 100%;
+    margin-right: 4rem;
 
     @include tablet {
         width: 10rem;
     }
 
     &__item {
-        background-color: $card-color;
+        background-color: $primary-text-color;
         border: 1px solid $border-color;
         border-radius: 4px;
         color: $secondary-text-color;
@@ -36,10 +38,12 @@
         cursor: pointer;
 
         @include tablet {
-            background-color: $secondary-text-color;
-            color: $primary-text-color;
-            border: none;
-            margin-bottom: -0.5rem;
+            // background-color: $main-bg-color;
+            // color: $primary-text-color;
+            // border: none;
+            // margin-bottom: -0.5rem;
+            margin-bottom: -1.2rem;
+            padding: 0.25rem 0.5rem;
         }
 
         &:hover {
@@ -47,11 +51,18 @@
 
             @include tablet {
                 transform: scale(1.1);
-                text-shadow: 0px 0px 15px $primary-text-color;
-                background-color: $secondary-text-color;
-                text-decoration: underline;
-                text-decoration-color: $primary-brand-color;
-                text-underline-offset: 0.4rem;
+                color: $secondary-brand-color;
+
+                & ~ i {
+                    transform: scale(1.1);
+                    color: $secondary-brand-color;    
+                }
+                // text-shadow: 0px 0px 10px $primary-text-color;
+                // // color: $secondary-brand-color;
+                // background-color: $main-bg-color;
+                // text-decoration: underline;
+                // text-decoration-color: $secondary-brand-color;
+                // text-underline-offset: 0.4rem;
             }
         }
     }
@@ -62,9 +73,10 @@
         top: -1rem;
         right: 0.5rem;
         margin-left: auto;
-
+        
         @include tablet {
-            display: none;
+            // display: none;
+            top: -0.7rem;
         }
     }
 }

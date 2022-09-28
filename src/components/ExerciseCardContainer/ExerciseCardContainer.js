@@ -20,7 +20,7 @@ const ExerciseCardContainer = ({ exerciseList, totalPages }) => {
         for(let i = 1; i <= totalPages; i++) {
             pages.push(i);
         }
-        return pages.map(page => <option value={page}>{page}</option>);
+        return pages.map(page => <option key={uuid()} value={page}>{page}</option>);
     }
 
     return (
@@ -30,7 +30,7 @@ const ExerciseCardContainer = ({ exerciseList, totalPages }) => {
                     <i className={`exercise-cards__prev bi-caret-left-fill ${page === 1 ? "disabled" : ""}`} onClick={() => setPage(page-1)}></i>
                     <i className={`exercise-cards__next bi-caret-right-fill ${page === totalPages ? "disabled" : ""}`}  onClick={() => setPage(page+1)}></i>
                 </div>
-                {exerciseList.slice(0+(page-1)*20,20+(page-1)*20).map(exercise => 
+                {exerciseList.slice(0+(page-1)*30,30+(page-1)*30).map(exercise => 
                     <ExerciseCard key={uuid()} exercise={exercise} handleClick={handleClick} />)}
             </div>
             <div className="exercise-cards__page-btns exercise-cards__page-btns--bottom">

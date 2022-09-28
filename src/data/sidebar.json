@@ -1,34 +1,25 @@
 [
     {
-        "title": "My Progress",
+        "title": "Dashboard",
         "icon": "bi-bar-chart-steps",
-        "path": "/home"
+        "path": "/dashboard"
+    },
+    {
+        "title": "Explore Exercises",
+        "icon": "bi-search",
+        "path": "/explore"
     },
     {
         "title": "My Workouts",
         "icon": "bi-person",
         "children": [
             {
-                "title": "Today's Workout",
-                "path": "/workouts/today"
-            },
-            {
                 "title": "Overview",
-                "path": "/workouts/overview"
-            }
-        ]
-    },
-    {
-        "title": "Explore Exercises",
-        "icon": "bi-search",
-        "children": [
-            {
-                "title": "By Category",
-                "path": "/explore/category"
+                "path": "/workouts"
             },
             {
-                "title": "Search",
-                "path": "/explore/search"
+                "title": "Presets",
+                "path": "/workouts/preset"
             }
         ]
     }

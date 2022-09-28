@@ -1,5 +1,11 @@
 [
     {
+        "name": "View All",
+        "highlight": ["back-deltoids", "front-deltoids", "chest", "head", "adductor", "abductors", 
+            "quadriceps", "hamstring", "gluteal", "knees", "calves", "left-soleus", "right-soleus",
+            "abs", "obliques", "forearm", "biceps", "triceps", "neck", "lower-back", "upper-back", "trapezius"]
+    },
+    {
         "name": "Shoulders",
         "highlight": ["back-deltoids", "front-deltoids"]
     },

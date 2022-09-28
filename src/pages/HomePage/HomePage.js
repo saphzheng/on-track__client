@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Line, Bar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -12,17 +13,24 @@ const HomePage = () => {
     Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
     Chart.defaults.color = "#000";
     const { user, getAccessTokenSilently } = useAuth0();
+    const [ exerciseList, setExerciseList ] = useState();
     const [ weightData, setWeightData ] = useState();
     const [ freqData, setFreqData ] = useState();
     const [ exerciseNames, setExerciseNames ] = useState();
     const [ selectedName1, setSelectedName1 ] = useState();
     const [ selectedName2, setSelectedName2 ] = useState();
     const [ newUser, setNewUser ] = useState(true);
+    // const [ showGraphs, setShowGraphs ] = useState(false);
 
     // options for graph
     const options = {
         responsive: true,
         spanGaps: true,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
         scales: {
             x: {
                 ticks: {
@@ -52,7 +60,8 @@ const HomePage = () => {
             });
             if (newUser && response.data.length !== 0) {
                 setNewUser(false);
-            }
+            } 
+            setExerciseList(response.data.slice(0,15));
             getWeightData(response.data);
             getFreqData(response.data);
         } catch (error) {
@@ -109,14 +118,14 @@ const HomePage = () => {
             datasets: [{
                 label: plottedExercise1,
                 data: filteredData1.map(workout => workout.weight),
-                borderColor: 'rgb(25, 69, 170)',
-                backgroundColor: 'rgba(25, 69, 170, 0.5)'
+                borderColor: 'rgb(255, 179, 0)',
+                backgroundColor: 'rgb(255, 179, 0)'
             },
             {
                 label: plottedExercise2,
                 data: filteredData2.map(workout => workout.weight),
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                borderColor: 'rgb(24, 82, 218)',
+                backgroundColor: 'rgb(24, 82, 218)'
             }]
         });
     }
@@ -134,12 +143,12 @@ const HomePage = () => {
         const weekCount = Object.values(monthCount).map(month => Math.floor(month/4));
 
         setFreqData({
-            labels: Object.keys(monthCount).map(month => toMonthName(month)),
+            labels: Object.keys(monthCount).sort().map(month => toMonthName(month)),
             datasets: [{
                 label: "# of Workouts Per Week",
                 data: weekCount,
-                borderColor: 'rgb(25, 69, 170)',
-                backgroundColor: 'rgba(25, 69, 170, 0.5)'
+                borderColor: 'rgb(255, 179, 0)',
+                backgroundColor: 'rgb(255, 179, 0)'
             }]
         })
     }
@@ -160,41 +169,82 @@ const HomePage = () => {
                 <div className="progress__content">
                     <h2 className="progress__welcome">Welcome to onTrack!</h2>
                     <span className="progress__text">Log your first workout to start seeing your progress. Exercises can be added from the
-                        <Link className="progress__link" to="/explore/byBodyPart"> Explore</Link> page.</span>
+                        <Link className="progress__link" to="/explore"> Explore</Link> page.</span>
                 </div>
             </section>
             
         );
-    } else{
+    } else {
         return (
             <section className="progress">
-                <h1 className="page-title">My Progress</h1>
                 <div className="progress__graphs">
                     <div className="progress__graph-container">
-                        <h2 className="progress__graph-title">Weight Progression</h2>
-                        <div className="progress__graph">
+                        <div className="progress__graph-wrapper">
+                            <h2 className="progress__graph-title">Weight Progression</h2>
                             <Line options={options} data={weightData} />
                         </div>
                         {exerciseNames && 
-                        <select className="progress__dropdown progress__dropdown--one" value={selectedName1} onChange={(e) => setSelectedName1(e.target.value)}>
-                            {exerciseNames.filter(exercise => exercise !== selectedName2).map(name => <option value={name}>{name}</option>)}
-                        </select>}
-                        {exerciseNames && 
-                        <select className="progress__dropdown progress__dropdown--two" value={selectedName2} onChange={(e) => setSelectedName2(e.target.value)}>
-                            {exerciseNames.filter(exercise => exercise !== selectedName1).map(name => <option value={name}>{name}</option>)}
-                        </select>}
+                        <div className="progress__dropdowns">
+                            <div className="progress__dropdown-container">
+                                <div className="progress__dropdown-label progress__dropdown-label--one"></div>
+                                <select className="dropdown progress__dropdown progress__dropdown--one" value={selectedName1} onChange={(e) => setSelectedName1(e.target.value)}>
+                                    {exerciseNames.filter(exercise => exercise !== selectedName2).map(name => <option value={name}>{name}</option>)}
+                                </select>
+                            </div>
+                            <div className="progress__dropdown-container">
+                                <div className="progress__dropdown-label progress__dropdown-label--two"></div>
+                                <select className="dropdown progress__dropdown progress__dropdown--two" value={selectedName2} onChange={(e) => setSelectedName2(e.target.value)}>
+                                    {exerciseNames.filter(exercise => exercise !== selectedName1).map(name => <option value={name}>{name}</option>)}
+                                </select>
+                            </div>
+                        </div>}
                     </div>
-                    <div className="progress__graph-container">
-                        <h2 className="progress__graph-title">Average Workout Frequency</h2>
-                        <div className="progress__graph">
-                            <Bar options={options} data={freqData} />
-                        </div>
-                        
+                    <div className="progress__graph-container progress__graph-container--freq">
+                        <h2 className="progress__graph-title">Average # of Workouts per Week</h2>
+                        <Bar options={options} data={freqData} />
                     </div>
+                </div>
+                <div className="progress__table">
+                    <h2 className="progress__graph-title">Recent Exercises</h2>
+                    <ul className="progress-list">
+                        <ul className="workout-details__header">
+                            <li className="progress-list__label">Date</li>
+                            <li className="workout-details__label workout-details__label--exercise">Exercise Name</li>
+                            <li className="workout-details__label workout-details__label--weight">Weight</li>
+                            <li className="workout-details__label">Sets</li>
+                            <li className="workout-details__label">Reps</li>
+                        </ul>
+                        {exerciseList && exerciseList.map(exercise => {
+                            return (
+                                <>
+                                <li key={uuid()} className="list-entry list-entry--table progress-list__entry">
+                                    <span className="progress-list__date">{exercise.date}</span>
+                                    <span className="workout-list__name">{exercise.exerciseName}</span>
+                                    <span className="workout-list__value">{exercise.weight}</span>
+                                    <span className="workout-list__value">{exercise.sets}</span>
+                                    <span className="workout-list__value">{exercise.reps}</span>
+                                </li>
+                                <li key={uuid()} className="list-entry list-entry--condensed progress-list__entry">
+                                    <span className="workout-list__name">{exercise.exerciseName}</span>
+                                    <div className="workout-list__stats"> 
+                                        <div className="workout-list__stat-column">
+                                            <span className="progress-list__value">{exercise.date}</span>
+                                            <span className="progress-list__descriptor">Weight: <span className="progress-list__value">{exercise.weight}</span></span>
+                                        </div>
+                                        <div className="workout-list__stat-column">
+                                            <span className="progress-list__descriptor">Sets: <span className="progress-list__value">{exercise.sets}</span></span>
+                                            <span className="progress-list__descriptor">Reps: <span className="progress-list__value">{exercise.reps}</span></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                </>
+                            );
+                        })}
+                    </ul>
                 </div>
             </section>
         );
-    }
+    } 
 }
 
 export default HomePage;

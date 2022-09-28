@@ -11,7 +11,7 @@ const BodyPartHighlighter = ({ bodyPart }) => {
     // navigate to bodypart details page correlating with selected muscle
     const handleClick = React.useCallback(({ muscle }) => {
         const clicked = bodyParts.find(bodyPart => bodyPart.highlight.includes(muscle))
-        navigate(`/explore/category/${clicked.name}`);
+        navigate(`/explore/${clicked.name}`);
     }, [data]);
 
     return (
@@ -19,13 +19,13 @@ const BodyPartHighlighter = ({ bodyPart }) => {
         <Model
             data={!bodyPart ? [{ muscles: ["front-deltoids"] }] : data}
             onClick={handleClick}
-            highlightedColors={["#1945AA"]}
+            highlightedColors={["#FFB300"]}
         />
         <Model
             type="posterior"
             data={!bodyPart ? [{ muscles: ["back-deltoids"] }] : data}
             onClick={handleClick}
-            highlightedColors={["#e65a5a"]}
+            highlightedColors={["#FFB300"]}
         />
         </>
     );

@@ -21,23 +21,25 @@ function App() {
   const today = format(new Date(), "LL-dd-yyyy");
 
   return (
-    <BrowserRouter>
-      {isAuthenticated ? <Header openNav={openNav} setOpenNav={setOpenNav} /> : null}
-      <main className="main">
+    <div className="wrapper">
+      <BrowserRouter>
         {isAuthenticated ? <Sidebar openNav={openNav} setOpenNav={setOpenNav} /> : null}
-        <Routes>
-          <Route path="/" element={isAuthenticated ? <Navigate to="/home" /> : <LandingPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/workouts/overview" element={<WorkoutsByMonth />} />
-          <Route path="/workouts/:date" element={<WorkoutDetails />} />
-          <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
-          <Route path="/explore/category" element={<ExploreByBodyPart />} />
-          <Route path="/explore/category/:bodyPart" element={<BodyPartDetails />} />
-          <Route path="/explore/search" element={<ExploreBySearch />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+        <main className="main">
+          {isAuthenticated ? <Header openNav={openNav} setOpenNav={setOpenNav} /> : null}
+          <Routes>
+            <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <LandingPage />} />
+            <Route path="/dashboard" element={<HomePage />} />
+            <Route path="/workouts" element={<WorkoutsByMonth />} />
+            <Route path="/workouts/:date" element={<WorkoutDetails />} />
+            <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
+            <Route path="/explore" element={<ExploreByBodyPart />} />
+            <Route path="/explore/:bodyPart" element={<BodyPartDetails />} />
+            <Route path="/search/:query" element={<ExploreBySearch />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
+    </div>
   );
 }
 

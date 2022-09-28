@@ -1,5 +1,13 @@
 @use './styles/global';
+@use './styles/mixins' as *;
 
 .main {
-  display: flex;
+  @include flex-contents();
+  flex-direction: column;
+  width: 100%;
+}
+
+.wrapper {
+  @include flex-contents();
+  width: 100%;
 }

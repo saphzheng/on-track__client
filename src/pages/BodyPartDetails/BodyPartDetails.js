@@ -20,8 +20,12 @@ const BodyPartDetails = () => {
     const [ totalPages, setTotalPages ] = useState(1);
 
     useEffect(() => {
-        getBodyPartExercises();
-    }, []);
+        if (bodyPart === "View All") {
+            getAllExercises();
+        } else {
+            getBodyPartExercises();
+        }
+    }, [bodyPart]);
 
     async function getBodyPartExercises() {
         try {
@@ -37,6 +41,21 @@ const BodyPartDetails = () => {
             console.log(error.message);
         }
     }
+
+    async function getAllExercises() {
+        try {
+            const token = await getAccessTokenSilently();
+            const response = await axios.get(`${API_URL}/exercise`, {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            });
+            setExerciseList(response.data);
+            setTotalPages(Math.ceil(response.data.length / 30));
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     
     const handleClear = () => {
         setTarget("default");
@@ -46,11 +65,11 @@ const BodyPartDetails = () => {
     return (
         <>
         <section className="bodypart-details">
-            <i className="back-button bi-chevron-left" onClick={() => navigate(-1)}></i>
+            <i className="back-button bi-chevron-left" onClick={() => navigate("/explore")}></i>
             <h1 className="page-title">{bodyPart}</h1>
-            <i className="bodypart-details__filter-btn bi-filter" onClick={() => setOpenFilter(!openFilter)}>Filter By</i>
+            {/* <i className="bodypart-details__filter-btn bi-filter" onClick={() => setOpenFilter(!openFilter)}>Filter By</i> */}
             {/* filter by dropdown menu */}
-            <div className={`bodypart-details__filters ${openFilter ? "bodypart-details__filters--open" : ""}`}>
+            {/* <div className={`bodypart-details__filters ${openFilter ? "bodypart-details__filters--open" : ""}`}>
                 <div className="bodypart-details__dropdowns">
                     <div className="bodypart-details__filter">
                         <label className="bodypart-details__label" htmlFor="target">Target Muscle:</label>
@@ -80,7 +99,7 @@ const BodyPartDetails = () => {
                     </div>
                 </div>
                 <button className="bodypart-details__button" onClick={handleClear}>Clear</button>
-            </div>
+            </div> */}
             <ExerciseCardContainer exerciseList={exerciseList} totalPages={totalPages} />
         </section>
         </>

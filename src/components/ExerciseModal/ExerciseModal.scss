@@ -30,7 +30,7 @@
     left: 0;
     padding: 4rem 3rem 1rem;
     z-index: 100;
-    background-color: $card-color;
+    background-color: $primary-text-color;
     color: $secondary-text-color;
 
     @include tablet {
@@ -129,8 +129,13 @@
         }
 
         &--close {
-            margin: 1rem 0;
-            width: 100%;
+            margin: 1rem 0 !important;
+            width: 13rem;
+        }
+
+        &--today {
+            width: 13rem;
+            margin-bottom: 1.5rem;
         }
     }
 
@@ -160,7 +165,6 @@
 
     &__label {
         @include flex-contents(flex-start, center);
-        color: $secondary-brand-color;
         font-weight: 500;
         margin-bottom: 0.5rem;
         margin-right: 0.5rem;

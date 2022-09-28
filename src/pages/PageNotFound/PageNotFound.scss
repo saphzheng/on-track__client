@@ -1,10 +1,14 @@
-@use '../../styles/global' as *;
+@use '../../styles/global';
+@use '../../styles/mixins' as *;
 
 .page-not-found {
     @extend %page-container;
 
     &__button {
-        margin-left: 2rem;
+        margin-top: 0.5rem;
+
+        @include tablet {
+            margin: 1rem;
+        }
     }
-    
 }

@@ -9,11 +9,10 @@ const SidebarItem = ({ item, setOpenNav }) => {
     if (item.children) {
         return (
             <div className={`sidebar-item ${open ? "sidebar-item--open" : ""}`}>
-                <div className="sidebar-item__content">
+                <div className="sidebar-item__content" onClick={() => setOpen(!open)}>
                     {item.icon && <i className={`sidebar-item__icon ${item.icon}`}></i>}
                     <span className="sidebar-item__title">{item.title}</span>
-                    <i className={`bi-chevron-down sidebar-item__expand ${open ? "sidebar-item__expand--open" : ""}`}
-                        onClick={() => setOpen(!open)}></i>
+                    <i className={`bi-chevron-down sidebar-item__expand ${open ? "sidebar-item__expand--open" : ""}`}></i>
                 </div>
                 <div className={`sidebar-item__children ${open ? "sidebar-item__children--open" : ""}`}>
                     {item.children.map(child => {
