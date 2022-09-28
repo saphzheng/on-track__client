@@ -24,10 +24,14 @@
     &__content {
         @include flex-contents(center, flex-start);
         flex-direction: column;
-        width: 50%;
+        width: 100%;
         height: 100vh;
         background-color: $header-sidebar-color;
         padding: 0 3rem;
+
+        @include tablet {
+            width: 50%;
+        }
 
         @include desktop {
             padding: 0 5rem;
