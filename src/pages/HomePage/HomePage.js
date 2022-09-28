@@ -166,11 +166,11 @@ const HomePage = () => {
     if (newUser) {
         return (
             <section className="progress">
-                <div className="progress__content">
+                {/* <div className="progress__content">
                     <h2 className="progress__welcome">Welcome to onTrack!</h2>
                     <span className="progress__text">Log your first workout to start seeing your progress. Exercises can be added from the
                         <Link className="progress__link" to="/explore"> Explore</Link> page.</span>
-                </div>
+                </div> */}
             </section>
             
         );

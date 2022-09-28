@@ -7,6 +7,10 @@
     padding-bottom: 4rem;
     position: relative;
 
+    &__space {
+        height: 1rem;
+    }
+
     &__filter-btn {
         position: relative;
         top: 0.5rem;

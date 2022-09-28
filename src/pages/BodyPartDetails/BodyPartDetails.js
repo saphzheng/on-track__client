@@ -67,6 +67,7 @@ const BodyPartDetails = () => {
         <section className="bodypart-details">
             <i className="back-button bi-chevron-left" onClick={() => navigate("/explore")}></i>
             <h1 className="page-title">{bodyPart}</h1>
+            <div className="bodypart-details__space"></div>
             {/* <i className="bodypart-details__filter-btn bi-filter" onClick={() => setOpenFilter(!openFilter)}>Filter By</i> */}
             {/* filter by dropdown menu */}
             {/* <div className={`bodypart-details__filters ${openFilter ? "bodypart-details__filters--open" : ""}`}>

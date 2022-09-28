@@ -27,8 +27,8 @@ body {
   font-weight: 600;  
   color: $primary-text-color;
   width: fit-content;
-  // border-bottom: 1px solid $primary-brand-color;
-  // border-image: linear-gradient(to right, $primary-brand-color, $main-bg-color) 30;
+  border-bottom: 1px solid $primary-brand-color;
+  border-image: linear-gradient(to right, $primary-brand-color, $main-bg-color) 30;
 
   @include tablet {
     margin: 0.5rem 1rem 0.25rem;
@@ -44,9 +44,9 @@ body {
 }
 
 .primary-button {
-  height: 1.75rem;
+  height: 2rem;
   font-size: 0.9rem;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   padding: 0 1rem;
   background-color: $primary-brand-color;
@@ -54,12 +54,12 @@ body {
   border: none;
   
   @include tablet {
-    height: 2.25rem;
+    height: 2.5rem;
     font-size: 1rem;
   }
 
   &:hover {
-    background-color: $border-color;
+    background-color: $active-link-color;
     color: $primary-text-color;
   }
 
