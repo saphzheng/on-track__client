@@ -24,6 +24,7 @@ function App() {
     <div className="wrapper">
       <BrowserRouter>
         {isAuthenticated ? <Sidebar openNav={openNav} setOpenNav={setOpenNav} /> : null}
+        {/* {isAuthenticated ? <div className="sidebar-proxy"></div> : null} */}
         <main className="main">
           {isAuthenticated ? <Header openNav={openNav} setOpenNav={setOpenNav} /> : null}
           <Routes>

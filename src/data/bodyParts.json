@@ -1,9 +1,7 @@
 [
     {
-        "name": "View All",
-        "highlight": ["back-deltoids", "front-deltoids", "chest", "head", "adductor", "abductors", 
-            "quadriceps", "hamstring", "gluteal", "knees", "calves", "left-soleus", "right-soleus",
-            "abs", "obliques", "forearm", "biceps", "triceps", "neck", "lower-back", "upper-back", "trapezius"]
+        "name": "Neck",
+        "highlight": [ "neck"]
     },
     {
         "name": "Shoulders",
@@ -38,11 +36,13 @@
         "highlight": ["abs", "obliques"]
     }, 
     {
-        "name": "Neck",
-        "highlight": [ "neck"]
+        "name": "Cardio",
+        "highlight": ["back-deltoids", "front-deltoids", "chest", "head", "adductor", "abductors", 
+            "quadriceps", "hamstring", "gluteal", "knees", "calves", "left-soleus", "right-soleus",
+            "abs", "obliques", "forearm", "biceps", "triceps", "neck", "lower-back", "upper-back", "trapezius"]
     },
     {
-        "name": "Cardio",
+        "name": "View All",
         "highlight": ["back-deltoids", "front-deltoids", "chest", "head", "adductor", "abductors", 
             "quadriceps", "hamstring", "gluteal", "knees", "calves", "left-soleus", "right-soleus",
             "abs", "obliques", "forearm", "biceps", "triceps", "neck", "lower-back", "upper-back", "trapezius"]

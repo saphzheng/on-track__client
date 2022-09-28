@@ -40,7 +40,7 @@
         width: fit-content;
         height: fit-content;
         padding: 3rem 1rem 1rem 1.5rem;
-        min-width: 20rem;
+        // min-width: 20rem;
         border-radius: 8px;
         animation: grow 0.2s ease-out;
     }
@@ -59,14 +59,16 @@
 
     &__content {
         @include flex-contents(flex-start, flex-start);
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
+        flex-direction: column;
     }
 
     &__gif {
         box-shadow: 0 0 5px 5px $primary-text-color;
         margin-bottom: 1rem;
-        margin-right: 2rem;
-        width: 7rem;
+        // margin-right: 2rem;
+        width: 10rem;
+        margin-left: 1.5rem;
 
         @include tablet {
             max-width: 10rem;
@@ -93,14 +95,14 @@
 
     &__detail {
         @extend .exercise-modal__info;
-        border-bottom: 1px solid $secondary-brand-color; 
+        // border-bottom: 1px solid $secondary-brand-color; 
     }
 
     &__add {
         margin-top: 1rem;
         font-weight: 600;
-        text-decoration: underline;
-        text-underline-offset: 0.25rem;
+        // text-decoration: underline;
+        // text-underline-offset: 0.25rem;
 
         @include tablet {
             display: none;
@@ -119,13 +121,13 @@
 
         &--submit {
             width: 100%;
-            max-width: 21rem;
+            // max-width: 21rem;
             margin-top: 0.5rem;
 
-            @include tablet {
-                width: 5rem;
-                margin: 0 1rem 0 1.5rem;
-            }
+            // @include tablet {
+            //     // width: 5rem;
+            //     // margin: 0 1rem 0 1.5rem;
+            // }
         }
 
         &--close {
@@ -142,7 +144,8 @@
     &__form {
         @include flex-contents(flex-start, center);
         font-size: 0.9rem;
-        // max-width: 21.5rem;
+        // max-width: 15rem;
+        width: 25rem;
         flex-wrap: wrap;
         margin-top: 0.75rem;
         transition: max-height 0.5s;
@@ -153,7 +156,7 @@
             flex-direction: row;
             font-size: 1rem;
             margin-top: 1.5rem;
-            flex-wrap: nowrap;
+            // flex-wrap: nowrap;
             overflow: hidden;
         }
 

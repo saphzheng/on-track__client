@@ -207,7 +207,7 @@ const HomePage = () => {
                 <div className="progress__table">
                     <h2 className="progress__graph-title">Recent Exercises</h2>
                     <ul className="progress-list">
-                        <ul className="workout-details__header">
+                        <ul className="workout-details__header progress-list__header">
                             <li className="progress-list__label">Date</li>
                             <li className="workout-details__label workout-details__label--exercise">Exercise Name</li>
                             <li className="workout-details__label workout-details__label--weight">Weight</li>

@@ -47,7 +47,7 @@
         }
 
         &:hover {
-            background-color: $non-focus-color;
+            // background-color: $non-focus-color;
 
             @include tablet {
                 transform: scale(1.1);

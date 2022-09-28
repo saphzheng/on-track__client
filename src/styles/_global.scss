@@ -59,13 +59,11 @@ body {
   }
 
   &:hover {
-    background-color: $active-link-color;
-    color: $primary-text-color;
+    background-color: $button-hover-color;
   }
 
   &--disabled {
-    background-color: $border-color;
-    color: $primary-text-color;
+    background-color: $button-hover-color;
   }
 }
 

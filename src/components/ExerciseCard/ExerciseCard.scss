@@ -12,6 +12,7 @@
     color: $secondary-text-color;
     filter: grayscale(0.6);
     cursor: pointer;
+    width: 100%;
   
     @include desktop {
         flex-basis: 17%;

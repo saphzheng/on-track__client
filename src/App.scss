@@ -11,3 +11,12 @@
   @include flex-contents();
   width: 100%;
 }
+
+// .sidebar-proxy {
+//   @include tablet {
+//     width: 15rem;
+//   }
+//   @include desktop {
+//     width: 13rem;
+//   }
+// }
