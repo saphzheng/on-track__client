@@ -115,13 +115,13 @@
         }
 
         &--close {
-            margin: 1rem 0 !important;
             width: 13rem;
+            margin-left: 1rem;
         }
 
         &--today {
             width: 13rem;
-            margin-bottom: 1.5rem;
+            margin: 1rem 0 !important;
         }
     }
 
