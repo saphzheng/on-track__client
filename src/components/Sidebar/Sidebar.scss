@@ -16,12 +16,7 @@
     background-color: $header-sidebar-color;
     min-height: 100vh;
     border-right: 2px solid $main-bg-color;
-    // position: fixed;
     position: relative;
-    // left: 0;
-    // top: 0;
-    // cursor: pointer;
-    // z-index: 1000;
 
     &--open {
         display: block;
