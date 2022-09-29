@@ -22,6 +22,7 @@ const HomePage = () => {
     const [ selectedName1, setSelectedName1 ] = useState();
     const [ selectedName2, setSelectedName2 ] = useState();
     const [ newUser, setNewUser ] = useState(true);
+    const [ noData, setNoData ] = useState(true);
 
     // options for graph
     const options = {
@@ -62,6 +63,9 @@ const HomePage = () => {
             if (newUser && response.data.length !== 0) {
                 setNewUser(false);
             } 
+            if (noData && response.data.length !== 0) {
+                setNoData(false);
+            } 
             setExerciseList(response.data.slice(0,15));
             getWeightData(response.data);
             getFreqData(response.data);
@@ -97,7 +101,6 @@ const HomePage = () => {
             plottedExercise1 = selectedName1;
             plottedExercise2 = selectedName2;
         }
-        // console.log(mainWorkout);
         let filteredData1 = data.filter(workout => workout.exerciseName === plottedExercise1).sort((a, b) => new Date(a.date) - new Date(b.date));
         let filteredData2 = data.filter(workout => workout.exerciseName === plottedExercise2).sort((a, b) =>new Date(a.date) - new Date(b.date));
 
@@ -187,6 +190,11 @@ const HomePage = () => {
                 </div>
             </section>            
         );
+    } else if (noData) {
+        return (
+            <section className="progress">
+            </section>
+        )
     } else {
         return (
             <section className="progress">
@@ -258,7 +266,7 @@ const HomePage = () => {
                 </div>
             </section>
         );
-    } 
+    }
 }
 
 export default HomePage;
