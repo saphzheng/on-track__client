@@ -36,11 +36,13 @@
     }
 
     &__add {
+        display: block;
         margin-left: 0.5rem;
+        margin-top: 0.5rem;
         cursor: pointer;
 
         @include tablet {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
         }
 
         &:hover {

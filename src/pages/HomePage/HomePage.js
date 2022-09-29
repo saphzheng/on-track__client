@@ -3,15 +3,17 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useState, useEffect } from 'react';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Line, Bar } from 'react-chartjs-2';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
+import logo from '../../assets/images/ontrack-logo.svg';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 const HomePage = () => {
     Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
     Chart.defaults.color = "#000";
+    const navigate = useNavigate();
     const { user, getAccessTokenSilently } = useAuth0();
     const [ exerciseList, setExerciseList ] = useState();
     const [ weightData, setWeightData ] = useState();
@@ -20,7 +22,6 @@ const HomePage = () => {
     const [ selectedName1, setSelectedName1 ] = useState();
     const [ selectedName2, setSelectedName2 ] = useState();
     const [ newUser, setNewUser ] = useState(true);
-    // const [ showGraphs, setShowGraphs ] = useState(false);
 
     // options for graph
     const options = {
@@ -93,7 +94,7 @@ const HomePage = () => {
             plottedExercise2 = Object.keys(workoutCount).find(key => workoutCount[key] === secondMax);
             setSelectedName2(plottedExercise2);
         } else {
-            plottedExercise1 = "Barbell Drag Curl";
+            plottedExercise1 = selectedName1;
             plottedExercise2 = selectedName2;
         }
         // console.log(mainWorkout);
@@ -113,21 +114,33 @@ const HomePage = () => {
             }
         })
 
-        setWeightData({
-            labels: dates,
-            datasets: [{
-                label: plottedExercise1,
-                data: filteredData1.map(workout => workout.weight),
-                borderColor: 'rgb(255, 179, 0)',
-                backgroundColor: 'rgb(255, 179, 0)'
-            },
-            {
-                label: plottedExercise2,
-                data: filteredData2.map(workout => workout.weight),
-                borderColor: 'rgb(24, 82, 218)',
-                backgroundColor: 'rgb(24, 82, 218)'
-            }]
-        });
+        if (plottedExercise1 && plottedExercise2) {
+            setWeightData({
+                labels: dates,
+                datasets: [{
+                    label: plottedExercise1,
+                    data: filteredData1.map(workout => workout.weight),
+                    borderColor: 'rgb(255, 179, 0)',
+                    backgroundColor: 'rgb(255, 179, 0)'
+                },
+                {
+                    label: plottedExercise2,
+                    data: filteredData2.map(workout => workout.weight),
+                    borderColor: 'rgb(24, 82, 218)',
+                    backgroundColor: 'rgb(24, 82, 218)'
+                }]
+            });
+        } else if (plottedExercise1) {
+            setWeightData({
+                labels: dates,
+                datasets: [{
+                    label: plottedExercise1,
+                    data: filteredData1.map(workout => workout.weight),
+                    borderColor: 'rgb(255, 179, 0)',
+                    backgroundColor: 'rgb(255, 179, 0)'
+                }]
+            });
+        }
     }
 
     const getFreqData = (data) => {
@@ -140,7 +153,7 @@ const HomePage = () => {
                 monthCount[workout.slice(0, 2)] += 1;
             }
         });
-        const weekCount = Object.values(monthCount).map(month => Math.floor(month/4));
+        const weekCount = Object.values(monthCount).sort().map(month => Math.floor(month/4));
 
         setFreqData({
             labels: Object.keys(monthCount).sort().map(month => toMonthName(month)),
@@ -166,13 +179,13 @@ const HomePage = () => {
     if (newUser) {
         return (
             <section className="progress">
-                {/* <div className="progress__content">
-                    <h2 className="progress__welcome">Welcome to onTrack!</h2>
-                    <span className="progress__text">Log your first workout to start seeing your progress. Exercises can be added from the
-                        <Link className="progress__link" to="/explore"> Explore</Link> page.</span>
-                </div> */}
-            </section>
-            
+                <div className="progress-welcome">
+                    <img className="progress-welcome__logo" src={logo} alt="onTrack Fitness"></img>
+                    <h1 className="progress-welcome__title">Welcome to onTrack Fitness</h1>
+                    <span className="progress-welcome__prompt">Log your first workout to start seeing your progress. Exercises can be added from the Explore Exercises page.</span>
+                    <button className="primary-button progress-welcome__cta" onClick={() => navigate("/explore")}>Go To Explore Exercises</button>
+                </div>
+            </section>            
         );
     } else {
         return (
@@ -191,12 +204,13 @@ const HomePage = () => {
                                     {exerciseNames.filter(exercise => exercise !== selectedName2).map(name => <option value={name}>{name}</option>)}
                                 </select>
                             </div>
+                            {selectedName2 &&
                             <div className="progress__dropdown-container">
                                 <div className="progress__dropdown-label progress__dropdown-label--two"></div>
                                 <select className="dropdown progress__dropdown progress__dropdown--two" value={selectedName2} onChange={(e) => setSelectedName2(e.target.value)}>
                                     {exerciseNames.filter(exercise => exercise !== selectedName1).map(name => <option value={name}>{name}</option>)}
                                 </select>
-                            </div>
+                            </div>}
                         </div>}
                     </div>
                     <div className="progress__graph-container progress__graph-container--freq">
@@ -217,14 +231,14 @@ const HomePage = () => {
                         {exerciseList && exerciseList.map(exercise => {
                             return (
                                 <>
-                                <li key={uuid()} className="list-entry list-entry--table progress-list__entry">
+                                <li key={uuid()} className="list-entry list-entry--table progress-list__entry" onClick={() => navigate(`/workouts/${exercise.date}`)}>
                                     <span className="progress-list__date">{exercise.date}</span>
                                     <span className="workout-list__name">{exercise.exerciseName}</span>
                                     <span className="workout-list__value">{exercise.weight}</span>
                                     <span className="workout-list__value">{exercise.sets}</span>
                                     <span className="workout-list__value">{exercise.reps}</span>
                                 </li>
-                                <li key={uuid()} className="list-entry list-entry--condensed progress-list__entry">
+                                <li key={uuid()} className="list-entry list-entry--condensed progress-list__entry" onClick={() => navigate(`/workouts/${exercise.date}`)}>
                                     <span className="workout-list__name">{exercise.exerciseName}</span>
                                     <div className="workout-list__stats"> 
                                         <div className="workout-list__stat-column">

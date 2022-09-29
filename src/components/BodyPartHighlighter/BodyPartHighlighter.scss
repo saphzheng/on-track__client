@@ -3,11 +3,15 @@
 
 .rbh-wrapper {
     display: none;
-    width: 13rem;
+    width: 12rem;
     padding: 1rem;
 
     @include tablet {
         @include flex-contents();
+    }
+
+    @include desktop {
+        width: 14rem;
     }
 }
 

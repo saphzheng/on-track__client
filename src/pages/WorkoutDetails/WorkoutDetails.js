@@ -42,7 +42,7 @@ const WorkoutDetails = () => {
 
     return (
         <section className="workout-details">
-            <i className="back-button bi-chevron-left" onClick={() => navigate("/workouts")}></i>
+            <i className="back-button bi-chevron-left" onClick={() => navigate("/workouts/overview")}></i>
             <h1 className="page-title">{currentDate.toDateString()}</h1>
             {workoutData && workoutData.length !== 0 ?
             <ul className="workout-details__header">
@@ -81,7 +81,7 @@ const WorkoutDetails = () => {
                 })}
             </ul> :
             <p className="workout-details__message">No workouts recorded for this day.</p>}
-            {workoutData && workoutData.length !== 0 ? <i className="workout-details__add bi-plus-square" onClick={() => navigate("/explore")}> Add Exercise</i> : null }
+            <i className="workout-details__add bi-plus-square" onClick={() => navigate("/explore")}> Add Exercise</i>
             <DeleteModal open={open} setOpen={setOpen} exerciseToDelete={exerciseToDelete} />
         </section>
     );

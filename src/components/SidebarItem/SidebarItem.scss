@@ -2,7 +2,6 @@
 
 .sidebar-item {
     width: 100%;
-    cursor: default;
     font-size: 0.9rem;
     cursor: pointer;
 
@@ -33,7 +32,6 @@
         margin-right: 0.5rem;
         padding: 0.25rem 0.5rem;
         width: 1rem;
-        // border-left: 2px solid $sidebar-bg-color;
     }
 
     &__expand {
@@ -88,8 +86,12 @@
         @extend .sidebar-item__children--open;
     }
 
-    & > div > i:last-child {
+    & > div {
         pointer-events: none;       
+    }
+
+    & > div ~ div {
+        pointer-events: all;       
     }
 
     & > .sidebar-item__content:hover {

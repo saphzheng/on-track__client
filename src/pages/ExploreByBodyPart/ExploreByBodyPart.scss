@@ -7,7 +7,7 @@
     
     &__content {
         margin-top: 1.5rem;
-        width: 100%;
+        width: 90%;
 
         @include tablet {
             @include flex-contents(flex-start);
@@ -20,10 +20,15 @@
     @include flex-contents(space-evenly, flex-start);
     flex-direction: column;
     width: 100%;
-    margin-right: 4rem;
 
     @include tablet {
+        width: 9rem;
+        margin-right: 1rem;
+    }
+
+    @include desktop {
         width: 10rem;
+        margin-right: 4rem;
     }
 
     &__item {
@@ -38,17 +43,11 @@
         cursor: pointer;
 
         @include tablet {
-            // background-color: $main-bg-color;
-            // color: $primary-text-color;
-            // border: none;
-            // margin-bottom: -0.5rem;
             margin-bottom: -1.2rem;
             padding: 0.25rem 0.5rem;
         }
 
         &:hover {
-            // background-color: $non-focus-color;
-
             @include tablet {
                 transform: scale(1.1);
                 color: $secondary-brand-color;
@@ -57,12 +56,18 @@
                     transform: scale(1.1);
                     color: $secondary-brand-color;    
                 }
-                // text-shadow: 0px 0px 10px $primary-text-color;
-                // // color: $secondary-brand-color;
-                // background-color: $main-bg-color;
-                // text-decoration: underline;
-                // text-decoration-color: $secondary-brand-color;
-                // text-underline-offset: 0.4rem;
+            }
+        }
+
+        &--active {
+            @include tablet {
+                transform: scale(1.1);
+                color: $secondary-brand-color;
+
+                & ~ i {
+                    transform: scale(1.1);
+                    color: $secondary-brand-color;    
+                }
             }
         }
     }
@@ -75,7 +80,6 @@
         margin-left: auto;
         
         @include tablet {
-            // display: none;
             top: -0.7rem;
         }
     }

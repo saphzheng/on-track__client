@@ -18,9 +18,10 @@ const ExploreByBodyPart = () => {
                     {bodyParts.map(bodyPart => {
                         return (
                             <>
-                            <li key={uuid()} className="explore-list__item" onMouseOver={() => setBodyPart(bodyPart)} 
-                                onClick={() => navigate(`/explore/${bodyPart.name}`)}>{bodyPart.name}</li>
-                            <i className="explore-list__arrow bi-chevron-right"></i>
+                                <li key={uuid()} className="explore-list__item" 
+                                    onMouseOver={() => setBodyPart(bodyPart)} onMouseOut={() => setBodyPart({"name": "View All", "highlight": [""]})}
+                                    onClick={() => navigate(`/explore/${bodyPart.name}`)}>{bodyPart.name}</li>
+                                <i key={uuid()} className="explore-list__arrow bi-chevron-right"></i>
                             </>
                         )})}
                 </ul>

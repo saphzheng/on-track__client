@@ -13,12 +13,9 @@ body {
 }
 
 %page-container {
-  // background-image: url('../assets/images/image.jpg');
-  // background-position: center;
-  // background-size: cover;
   background-color: $main-bg-color;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 52px);
   padding: 1rem;
 }
 
@@ -43,41 +40,43 @@ body {
   }
 }
 
-.primary-button {
+%button {
   height: 2rem;
   font-size: 0.9rem;
   border-radius: 5px;
   cursor: pointer;
   padding: 0 1rem;
-  background-color: $primary-brand-color;
-  color: $secondary-text-color;
-  border: none;
-  
+
   @include tablet {
     height: 2.5rem;
     font-size: 1rem;
   }
+}
+
+.primary-button {
+  @extend %button;
+  background-color: $primary-brand-color;
+  color: $secondary-text-color;
+  border: none;
 
   &:hover {
     background-color: $button-hover-color;
   }
 
   &--disabled {
-    background-color: $button-hover-color;
+    background-color: $non-focus-color;
   }
 }
 
 .secondary-button {
-  @extend .primary-button;
+  @extend %button;
   background-color: $primary-text-color;
   color: $border-color;
-  border: 1px solid $border-color;
+  border: 1px solid $primary-text-color;
   margin-right: 1rem;
 
   &:hover {
-    color: $secondary-brand-color;
-    background-color: $primary-text-color;
-    border: 1px solid $secondary-brand-color;
+    border: 1px solid $border-color;
   }
 }
 
@@ -94,9 +93,13 @@ body {
 }
 
 .delete-button {
-  @extend .primary-button;
+  @extend %button;
   background-color: $error-color;
   color: $primary-text-color;
+
+  &:hover {
+    background-color: $border-color;
+  }
 }
 
 .form-field {

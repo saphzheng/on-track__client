@@ -15,11 +15,11 @@
         "children": [
             {
                 "title": "Overview",
-                "path": "/workouts"
+                "path": "/workouts/overview"
             },
             {
                 "title": "Presets",
-                "path": "/workouts/preset"
+                "path": "/workouts/presets"
             }
         ]
     }

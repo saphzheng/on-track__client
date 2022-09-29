@@ -13,6 +13,7 @@ import BodyPartDetails from './pages/BodyPartDetails/BodyPartDetails';
 import WorkoutsByMonth from './pages/WorkoutsByMonth/WorkoutsByMonth';
 import WorkoutDetails from './pages/WorkoutDetails/WorkoutDetails';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
+import PresetWorkouts from './pages/PresetWorkouts/PresetWorkouts';
 
 function App() {
   const { isAuthenticated } = useAuth0();
@@ -30,7 +31,8 @@ function App() {
           <Routes>
             <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <LandingPage />} />
             <Route path="/dashboard" element={<HomePage />} />
-            <Route path="/workouts" element={<WorkoutsByMonth />} />
+            <Route path="/workouts/overview" element={<WorkoutsByMonth />} />
+            <Route path="/workouts/presets" element={<PresetWorkouts />} />
             <Route path="/workouts/:date" element={<WorkoutDetails />} />
             <Route path="/workouts/today" element={<Navigate to={`/workouts/${today}`} />} />
             <Route path="/explore" element={<ExploreByBodyPart />} />

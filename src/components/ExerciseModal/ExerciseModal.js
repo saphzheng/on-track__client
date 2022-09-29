@@ -65,24 +65,22 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                 <div className="modal-overlay"></div>
                 <div className="exercise-modal">
                     <i className="exercise-modal__close bi-x-lg" onClick={closeModal} />
+                    <img className="exercise-modal__gif" src={exercise.gifUrl}/>
                     <div className="exercise-modal__content">
-                        <img className="exercise-modal__gif" src={exercise.gifUrl}/>
-                        <div className="exercise-modal__right">
-                            <h2 className="exercise-modal__title">{titleCase(exercise.name)}</h2>
-                            <p className="exercise-modal__info">Target Muscle: <span className="exercise-modal__detail">{titleCase(exercise.target)}</span></p>
-                            <p className="exercise-modal__info">Requires: <span className="exercise-modal__detail">{titleCase(exercise.equipment)}</span></p>
-                            <button className={`primary-button exercise-modal__button--add ${openForm? "primary-button--disabled" : ""}`} onClick={() => setOpenForm(!openForm)}>Add To Today's Workout</button>
-                            <span className="exercise-modal__add">Add To Today's Workout:</span>
-                        </div>
+                        <h2 className="exercise-modal__title">{titleCase(exercise.name)}</h2>
+                        <p className="exercise-modal__info">Target Muscle: <span className="exercise-modal__detail">{titleCase(exercise.target)}</span></p>
+                        <p className="exercise-modal__info">Requires: <span className="exercise-modal__detail">{titleCase(exercise.equipment)}</span></p>
+                        <button className={`primary-button exercise-modal__button--add ${openForm? "primary-button--disabled" : ""}`} onClick={() => setOpenForm(!openForm)}>Add To Today's Workout</button>
+                        <span className="exercise-modal__add">Add To Today's Workout:</span>
                     </div>
                     <form className={`exercise-modal__form ${openForm? "exercise-modal__form--open" : ""}`} onSubmit={handleSubmit}>
                         <label className="exercise-modal__label" htmlFor="weight">Weight: 
-                        <input className="form-field exercise-modal__input" type="number" name="weight" id="weight"></input></label>
+                        <input className="form-field exercise-modal__input" type="number" name="weight" id="weight" value="0"></input></label>
                         <span className="exercise-modal__units">lbs</span>
                         <label className="exercise-modal__label" htmlFor="sets">Sets: 
-                        <input className="form-field exercise-modal__input" type="number" name="sets" id="sets"></input></label>
+                        <input className="form-field exercise-modal__input" type="number" name="sets" id="sets" value="0"></input></label>
                         <label className="exercise-modal__label" htmlFor="reps">Reps: 
-                        <input className="form-field exercise-modal__input" type="number" name="reps" id="reps"></input></label>
+                        <input className="form-field exercise-modal__input" type="number" name="reps" id="reps" value="0"></input></label>
                         <button className="primary-button exercise-modal__button--submit">Submit</button>
                     </form>
                 </div>
