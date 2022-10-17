@@ -10,6 +10,7 @@ root.render(
     domain="dev-3av77v7a.us.auth0.com"
     clientId="rpGuAUdfqvx12tenDjbvsyCeeVM8n1iY"
     redirectUri="https://ontrack-fitness.herokuapp.com/dashboard"
+    // redirectUri='http://localhost:3000'
     audience="https://onTrack.com/api/v2/"
     scope="read:current_user update:current_user_metadata"
   >

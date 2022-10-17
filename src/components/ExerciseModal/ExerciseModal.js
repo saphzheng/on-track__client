@@ -13,6 +13,11 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
     const [ openForm, setOpenForm ] = useState(false);
     const [ submit, setSubmit ] = useState(false);
     const [ message, setMessage ] = useState("");
+    const [ fields, setFields ] = useState({
+        "sets": 0,
+        "reps": 0,
+        "weight": 0
+    });
 
     if (!open || !exercise) {
         return null;
@@ -31,17 +36,13 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const weight = e.target.weight.value || 0;
-        const sets = e.target.sets.value || 0;
-        const reps = e.target.reps.value || 0;
-
         try {
             const token = await getAccessTokenSilently();
             const body = {
                 "exerciseName": titleCase(exercise.name),
-                "weight": weight,
-                "sets": sets,
-                "reps": reps,
+                "weight": fields.weight,
+                "sets": fields.sets,
+                "reps": fields.reps,
                 "date": format(new Date(), "LL-dd-yyyy"),
                 "user": user.email
             };
@@ -75,12 +76,15 @@ const ExerciseModal = ({ open, setOpen, exercise }) => {
                     </div>
                     <form className={`exercise-modal__form ${openForm? "exercise-modal__form--open" : ""}`} onSubmit={handleSubmit}>
                         <label className="exercise-modal__label" htmlFor="weight">Weight: 
-                        <input className="form-field exercise-modal__input" type="number" name="weight" id="weight" value="0"></input></label>
+                        <input className="form-field exercise-modal__input" type="number" name="weight" id="weight" 
+                            value={fields.weight} onChange={(e) => setFields({...fields, "weight": e.target.value})}></input></label>
                         <span className="exercise-modal__units">lbs</span>
                         <label className="exercise-modal__label" htmlFor="sets">Sets: 
-                        <input className="form-field exercise-modal__input" type="number" name="sets" id="sets" value="0"></input></label>
+                        <input className="form-field exercise-modal__input" type="number" name="sets" id="sets" 
+                            value={fields.sets} onChange={(e) => setFields({...fields, "sets": e.target.value})}></input></label>
                         <label className="exercise-modal__label" htmlFor="reps">Reps: 
-                        <input className="form-field exercise-modal__input" type="number" name="reps" id="reps" value="0"></input></label>
+                        <input className="form-field exercise-modal__input" type="number" name="reps" id="reps" 
+                            value={fields.reps} onChange={(e) => setFields({...fields, "reps": e.target.value})}></input></label>
                         <button className="primary-button exercise-modal__button--submit">Submit</button>
                     </form>
                 </div>
