@@ -40,7 +40,6 @@ const ExerciseCardContainer = ({ exerciseList, totalPages }) => {
                     {renderPageNums()}
                 </select>
                 <span>/ {totalPages}</span>
-                {console.log(page, totalPages)}
                 <i className={`exercise-cards__next bi-caret-right-fill ${page === totalPages ? "disabled" : ""}`} onClick={() => setPage(page+1)}></i>
             </div>
             <ExerciseModal open={open} setOpen={setOpen} exercise={selected} />
